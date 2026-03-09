@@ -83,9 +83,16 @@ collections:
         name: "publications"
         file: "public/data/publications.json"
         fields:
+          # BibTeX Import Tool - appears first for easy access
+          - label: "BibTeX Import Tool"
+            name: "bibtex_import"
+            widget: "bibtex-import"
+            hint: "Paste BibTeX entries to batch import publications. Entries will be added to the Publications by Year list below."
+
           - label: "Publications by Year"
             name: "byYear"
             widget: "list"
+            hint: "Publications are organized by year. Use the BibTeX Import Tool above to add multiple entries at once."
             fields:
               - {label: "Year", name: "year", widget: "number", value_type: "int"}
               - label: "Papers"
