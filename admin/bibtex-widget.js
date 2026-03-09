@@ -606,7 +606,8 @@
         showSuccessMessage && h('div', { style: { ...styles.successBox, border: '2px solid #68d391', marginBottom: '8px' } },
           h('strong', null, 'Entries Added!'),
           h('p', { style: { marginTop: '4px' } },
-          'IMPORTANT: Click the "Save" button in the CMS toolbar to publish your changes to workflow.'
+            'IMPORTANT: Click the "Save" button in the CMS toolbar to publish your changes to workflow.'
+          )
         ),
 
         // Divider
