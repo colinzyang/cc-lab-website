@@ -319,7 +319,7 @@
       this.props.onChange(newValue);
     },
 
-    renderExistingPublications() {
+    renderExistingPublications(styles) {
       const value = this.props.value || [];
       const totalPapers = value.reduce((sum, yg) => sum + (yg.papers ? yg.papers.length : 0), 0);
 
@@ -559,7 +559,7 @@
 
       return h('div', { id: forID, className: classNameWrapper, style: styles.container },
         // Existing Publications Section
-        this.renderExistingPublications(),
+        this.renderExistingPublications(styles),
 
         // Divider
         h('hr', { style: { border: 'none', borderTop: '2px solid #e1e4e8', margin: '24px 0' } }),
