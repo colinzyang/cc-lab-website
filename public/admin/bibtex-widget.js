@@ -288,6 +288,144 @@
       });
     },
 
+    // Delete existing entry
+    handleDeleteExisting(year, paperIndex) {
+      const value = this.props.value || [];
+      const newValue = value.map(yearGroup => {
+        if (yearGroup.year === year) {
+          const newPapers = yearGroup.papers.filter((_, i) => i !== paperIndex);
+          return { ...yearGroup, papers: newPapers };
+        }
+        return yearGroup;
+      }).filter(yearGroup => yearGroup.papers && yearGroup.papers.length > 0);
+      this.props.onChange(newValue);
+    },
+
+    // Edit existing entry
+    handleEditExisting(year, paperIndex, field, value) {
+      const existingValue = this.props.value || [];
+      const newValue = existingValue.map(yearGroup => {
+        if (yearGroup.year === year) {
+          const newPapers = yearGroup.papers.map((paper, i) => {
+            if (i === paperIndex) {
+              return { ...paper, [field]: value };
+            }
+            return paper;
+          });
+          return { ...yearGroup, papers: newPapers };
+        }
+        return yearGroup;
+      });
+      this.props.onChange(newValue);
+    },
+
+    renderExistingPublications() {
+      const value = this.props.value || [];
+      const totalPapers = value.reduce((sum, yg) => sum + (yg.papers ? yg.papers.length : 0), 0);
+
+      if (totalPapers === 0) {
+        return h('div', null,
+          h('label', { style: styles.label }, 'Existing Publications'),
+          h('p', { style: { ...styles.hint, fontStyle: 'italic' } }, 'No publications yet. Use the BibTeX Import Tool below to add entries.')
+        );
+      }
+
+      const yearGroupElements = value.map((yearGroup, ygIndex) => {
+        if (!yearGroup.papers || yearGroup.papers.length === 0) return null;
+
+        const paperElements = yearGroup.papers.map((paper, paperIndex) =>
+          h('div', { key: paperIndex, style: { ...styles.entryCard, marginTop: paperIndex === 0 ? '8px' : '12px' } },
+            h('div', { style: styles.entryHeader },
+              h('div', { style: { flex: 1 } },
+                h('input', {
+                  type: 'text',
+                  value: paper.title,
+                  onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'title', e.target.value),
+                  style: { ...styles.inputField, fontWeight: '600', fontSize: '15px' },
+                })
+              ),
+              h('button', {
+                type: 'button',
+                onClick: () => this.handleDeleteExisting(yearGroup.year, paperIndex),
+                style: styles.removeButton,
+              }, 'Delete')
+            ),
+            h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '12px' } },
+              h('div', null,
+                h('label', { style: { ...styles.label, fontSize: '12px' } }, 'Authors'),
+                h('input', {
+                  type: 'text',
+                  value: paper.authors || '',
+                  onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'authors', e.target.value),
+                  style: styles.inputField,
+                })
+              ),
+              h('div', null,
+                h('label', { style: { ...styles.label, fontSize: '12px' } }, 'Journal'),
+                h('input', {
+                  type: 'text',
+                  value: paper.journal || '',
+                  onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'journal', e.target.value),
+                  style: styles.inputField,
+                })
+              ),
+              h('div', null,
+                h('label', { style: { ...styles.label, fontSize: '12px' } }, 'Year'),
+                h('input', {
+                  type: 'number',
+                  value: paper.year,
+                  onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'year', parseInt(e.target.value, 10) || paper.year),
+                  style: { ...styles.inputField, width: '100px' },
+                })
+              ),
+              h('div', null,
+                h('label', { style: { ...styles.label, fontSize: '12px' } }, 'Date'),
+                h('input', {
+                  type: 'text',
+                  value: paper.date || '',
+                  onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'date', e.target.value),
+                  style: { ...styles.inputField, width: '120px' },
+                })
+              ),
+              h('div', null,
+                h('label', { style: { ...styles.label, fontSize: '12px' } }, 'DOI'),
+                h('input', {
+                  type: 'text',
+                  value: paper.doi || '',
+                  onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'doi', e.target.value),
+                  style: styles.inputField,
+                })
+              ),
+              h('div', null,
+                h('label', { style: { ...styles.label, fontSize: '12px' } }, 'Link'),
+                h('input', {
+                  type: 'text',
+                  value: paper.link || '',
+                  onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'link', e.target.value),
+                  style: styles.inputField,
+                })
+              )
+            )
+          )
+        );
+
+        return h('div', { key: ygIndex, style: { marginTop: ygIndex === 0 ? '0' : '16px' } },
+          h('div', { style: { ...styles.label, fontSize: '16px', color: '#004a99', marginBottom: '8px' } },
+            `${yearGroup.year} (${yearGroup.papers.length} paper${yearGroup.papers.length > 1 ? 's' : ''})`
+          ),
+          paperElements
+        );
+      });
+
+      return h('div', null,
+        h('label', { style: styles.label },
+          `Existing Publications (${totalPapers} total)`
+        ),
+        h('p', { style: styles.hint }, 'You can edit or delete publications below. Changes are saved automatically.'),
+        yearGroupElements
+      );
+    },
+
     render() {
       const { bibtexInput, parsedEntries, errors, previewMode, duplicates } = this.state;
       const { forID, classNameWrapper } = this.props;
@@ -420,6 +558,13 @@
       };
 
       return h('div', { id: forID, className: classNameWrapper, style: styles.container },
+        // Existing Publications Section
+        this.renderExistingPublications(),
+
+        // Divider
+        h('hr', { style: { border: 'none', borderTop: '2px solid #e1e4e8', margin: '24px 0' } }),
+
+        // BibTeX Import Section
         h('label', { style: styles.label }, 'BibTeX Import Tool'),
         h('p', { style: styles.hint }, 'Paste BibTeX entries below to batch import publications. Multiple entries are supported.'),
 

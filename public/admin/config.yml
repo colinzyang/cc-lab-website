@@ -83,33 +83,11 @@ collections:
         name: "publications"
         file: "public/data/publications.json"
         fields:
-          # BibTeX Import Tool - appears first for easy access
-          - label: "BibTeX Import Tool"
-            name: "bibtex_import"
+          # Publications managed by custom BibTeX widget (includes import and management)
+          - label: "Publications Manager"
+            name: "publications"
             widget: "bibtex-import"
-            hint: "Paste BibTeX entries to batch import publications. Entries will be added to the Publications by Year list below."
-
-          - label: "Publications by Year"
-            name: "byYear"
-            widget: "list"
-            hint: "Publications are organized by year. Use the BibTeX Import Tool above to add multiple entries at once."
-            fields:
-              - {label: "Year", name: "year", widget: "number", value_type: "int"}
-              - label: "Papers"
-                name: "papers"
-                widget: "list"
-                fields:
-                  - {label: "ID", name: "id", widget: "number", value_type: "int"}
-                  - {label: "Title", name: "title", widget: "string"}
-                  - {label: "Journal", name: "journal", widget: "string"}
-                  - {label: "Date", name: "date", widget: "string"}
-                  - {label: "Year", name: "year", widget: "number", value_type: "int"}
-                  - {label: "Authors", name: "authors", widget: "text"}
-                  - {label: "Link (DOI URL)", name: "link", widget: "string"}
-                  - {label: "DOI", name: "doi", widget: "string", required: false}
-                  - {label: "Preprint URL", name: "preprint_url", widget: "string", required: false}
-                  - {label: "Preprint Label", name: "preprint_label", widget: "string", required: false, hint: "e.g., arXiv, bioRxiv"}
-                  - {label: "Image", name: "image", widget: "image", required: false}
+            hint: "Manage all publications here. Use the BibTeX Import Tool to add new entries, or edit/delete existing ones below."
 
   # 新闻集合
   - name: "news"

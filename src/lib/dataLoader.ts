@@ -93,37 +93,15 @@ export async function loadMembers() {
 export async function loadPublications() {
   const data = await loadJSON<any>('/data/publications.json');
 
-  // Merge byYear and bibtex_import, combining papers for the same year
-  const yearMap = new Map<number, any[]>();
+  // Read from the unified 'publications' field
+  const publications = data.publications || data.byYear || [];
 
-  // Add byYear publications
-  if (data.byYear) {
-    for (const group of data.byYear) {
-      if (group.papers) {
-        const existing = yearMap.get(group.year) || [];
-        yearMap.set(group.year, [...existing, ...group.papers]);
-      }
-    }
-  }
-
-  // Add bibtex_import publications
-  if (data.bibtex_import) {
-    for (const group of data.bibtex_import) {
-      if (group.papers) {
-        const existing = yearMap.get(group.year) || [];
-        yearMap.set(group.year, [...existing, ...group.papers]);
-      }
-    }
-  }
-
-  // Convert back to sorted array (newest first)
-  const mergedByYear = Array.from(yearMap.entries())
-    .map(([year, papers]) => ({ year, papers }))
-    .sort((a, b) => b.year - a.year);
+  // Sort by year descending (newest first)
+  const sortedPublications = [...publications].sort((a, b) => b.year - a.year);
 
   return {
-    PUBLICATIONS_BY_YEAR: mergedByYear,
-    ALL_PUBLICATIONS: mergedByYear.flatMap((group: any) => group.papers)
+    PUBLICATIONS_BY_YEAR: sortedPublications,
+    ALL_PUBLICATIONS: sortedPublications.flatMap((group: any) => group.papers || [])
   };
 }
 
