@@ -184,6 +184,7 @@
         errors: [],
         previewMode: false,
         duplicates: [],
+        showSuccessMessage: false,
       };
     },
 
@@ -239,6 +240,9 @@
 
       if (parsedEntries.length === 0) return;
 
+      console.log('handleAddToList - parsedEntries:', parsedEntries);
+      console.log('handleAddToList - current value:', value);
+
       // Get max ID from existing entries
       let maxId = 0;
       value.forEach(yearGroup => {
@@ -281,14 +285,24 @@
       // Sort by year descending
       newValue.sort((a, b) => b.year - a.year);
 
+      console.log('handleAddToList - newValue to save:', newValue);
+
       this.props.onChange(newValue);
+
+      // Show success message
       this.setState({
         bibtexInput: '',
         parsedEntries: [],
         errors: [],
         previewMode: false,
         duplicates: [],
+        showSuccessMessage: true,
       });
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        this.setState({ showSuccessMessage: false });
+      }, 5000);
     },
 
     // Delete existing entry
@@ -454,7 +468,7 @@
     },
 
     render() {
-      const { bibtexInput, parsedEntries, errors, previewMode, duplicates } = this.state;
+      const { bibtexInput, parsedEntries, errors, previewMode, duplicates, showSuccessMessage } = this.state;
       const { forID, classNameWrapper } = this.props;
 
       const styles = {
@@ -587,6 +601,13 @@
       return h('div', { id: forID, className: classNameWrapper, style: styles.container },
         // Existing Publications Section
         this.renderExistingPublications(styles),
+
+        // Success message after adding entries
+        showSuccessMessage && h('div', { style: { ...styles.successBox, border: '2px solid #68d391', marginBottom: '8px' } },
+          h('strong', null, 'Entries Added!'),
+          h('p', { style: { marginTop: '4px' } },
+          'IMPORTANT: Click the "Save" button in the CMS toolbar to publish your changes to workflow.'
+        ),
 
         // Divider
         h('hr', { style: { border: 'none', borderTop: '2px solid #e1e4e8', margin: '24px 0' } }),
