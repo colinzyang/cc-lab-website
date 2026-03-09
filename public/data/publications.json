@@ -4,87 +4,16 @@
       "year": 2026,
       "papers": [
         {
-          "id": 1,
-          "title": "Exploration of Non-Existent Data: A Study in Virtual Bibliography",
-          "journal": "International Journal of Lorem Ipsum",
-          "date": "2026",
-          "year": 2026,
           "authors": "Synthetic Scientist, Peter Placeholder, Four-Zero-Four Error",
+          "date": "2026",
+          "bibtexKey": "faketest2026",
+          "journal": "International Journal of Lorem Ipsum",
+          "title": "Exploration of Non-Existent Data: A Study in Virtual Bibliography",
           "link": "https://doi.org/10.0000/null.v99i0.void",
-          "doi": "10.0000/null.v99i0.void",
+          "id": 1,
           "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "faketest2026"
-        }
-      ]
-    },
-    {
-      "year": 2024,
-      "papers": [
-        {
-          "authors": "Doe J, Smith A, Johnson B",
-          "date": "2024 Jan",
-          "journal": "Nature Machine Intelligence",
-          "title": "Deep Learning for Drug-Target Interaction Prediction: A Comprehensive Review",
-          "preprint_url": "https://arxiv.org/abs/2023.12345",
-          "link": "https://doi.org/10.1038/s42256-024-00001",
-          "id": 2,
-          "image": "/assets/images/papers/paper1.jpg",
-          "year": 2024,
-          "doi": "10.1038/s42256-024-00001",
-          "preprint_label": "arXiv"
-        }
-      ]
-    },
-    {
-      "year": 2023,
-      "papers": [
-        {
-          "authors": "Smith A, Wong A, Doe J",
-          "date": "2023 Dec",
-          "journal": "Cell",
-          "title": "Single-Cell RNA Sequencing Reveals Novel Cell Types in Disease",
-          "preprint_url": "https://www.biorxiv.org/content/10.1101/2023.09.001",
-          "link": "https://doi.org/10.1016/j.cell.2023.11.001",
-          "id": 3,
-          "image": "/assets/images/papers/paper2.jpg",
-          "year": 2023,
-          "doi": "10.1016/j.cell.2023.11.001",
-          "preprint_label": "bioRxiv"
-        },
-        {
-          "authors": "Johnson B, Brown M, Doe J",
-          "date": "2023 Nov",
-          "journal": "Journal of Chemical Information and Modeling",
-          "title": "Graph Neural Networks for Molecular Property Prediction",
-          "link": "https://doi.org/10.1021/acs.jcim.3c00001",
-          "id": 4,
-          "image": "/assets/images/papers/paper3.jpg",
-          "year": 2023,
-          "doi": "10.1021/acs.jcim.3c00001"
-        },
-        {
-          "authors": "Wong A, Doe J",
-          "date": "2023 Oct",
-          "journal": "Nature Methods",
-          "title": "Interpretable Machine Learning for Genomics",
-          "preprint_url": "https://www.biorxiv.org/content/10.1101/2023.08.001",
-          "link": "https://doi.org/10.1038/s41592-023-02001",
-          "id": 5,
-          "image": "/assets/images/papers/paper4.jpg",
-          "year": 2023,
-          "doi": "10.1038/s41592-023-02001",
-          "preprint_label": "bioRxiv"
-        },
-        {
-          "authors": "Brown M, Smith A, Johnson B, Doe J",
-          "date": "2023 Sep",
-          "journal": "Bioinformatics",
-          "title": "Multi-omics Integration Using Deep Learning",
-          "link": "https://doi.org/10.1093/bioinformatics/btad501",
-          "id": 6,
-          "image": "/assets/images/papers/paper5.jpg",
-          "year": 2023,
-          "doi": "10.1093/bioinformatics/btad501"
+          "year": 2026,
+          "doi": "10.0000/null.v99i0.void"
         }
       ]
     }
