@@ -188,6 +188,24 @@
       };
     },
 
+    // Helper to normalize value to always be an array
+    getNormalizedValue() {
+      let value = this.props.value;
+      if (!value) {
+        return [];
+      }
+      if (Array.isArray(value)) {
+        return value;
+      }
+      // Handle case where CMS passes the full object instead of just the field value
+      if (value.publications && Array.isArray(value.publications)) {
+        console.warn('BibTeX Widget - received object with publications key, extracting array');
+        return value.publications;
+      }
+      console.warn('BibTeX Widget - unexpected value format:', value);
+      return [];
+    },
+
     handleInputChange(e) {
       this.setState({ bibtexInput: e.target.value, previewMode: false });
     },
@@ -200,7 +218,7 @@
       }
 
       // Get existing entries to check for duplicates
-      const value = this.props.value || [];
+      const value = this.getNormalizedValue();
       const existingPubs = [];
       value.forEach(yearGroup => {
         if (yearGroup.papers) {
@@ -236,7 +254,7 @@
 
     handleAddToList() {
       const { parsedEntries } = this.state;
-      const value = this.props.value || [];
+      const value = this.getNormalizedValue();
 
       if (parsedEntries.length === 0) return;
 
@@ -309,7 +327,7 @@
 
     // Delete existing entry
     handleDeleteExisting(year, paperIndex) {
-      const value = this.props.value || [];
+      const value = this.getNormalizedValue();
       const newValue = value.map(yearGroup => {
         if (yearGroup.year === year) {
           const newPapers = yearGroup.papers.filter((_, i) => i !== paperIndex);
@@ -323,7 +341,7 @@
 
     // Edit existing entry
     handleEditExisting(year, paperIndex, field, value) {
-      const existingValue = this.props.value || [];
+      const existingValue = this.getNormalizedValue();
       const newValue = existingValue.map(yearGroup => {
         if (yearGroup.year === year) {
           const newPapers = yearGroup.papers.map((paper, i) => {
@@ -341,27 +359,12 @@
     },
 
     renderExistingPublications(styles) {
-      // Safely get value, ensuring it's always an array
-      let value = this.props.value;
+      // Use the normalized value helper
+      const value = this.getNormalizedValue();
 
       // Debug: log the received value
       console.log('BibTeX Widget - raw props.value:', this.props.value);
-      console.log('BibTeX Widget - value type:', typeof this.props.value);
-
-      // Handle various value formats
-      if (!value) {
-        value = [];
-      } else if (!Array.isArray(value)) {
-        // If value is not an array, it might be an object with publications key
-        if (value.publications && Array.isArray(value.publications)) {
-          value = value.publications;
-        } else {
-          console.warn('BibTeX Widget - unexpected value format:', value);
-          value = [];
-        }
-      }
-
-      console.log('BibTeX Widget - processed value:', value);
+      console.log('BibTeX Widget - normalized value:', value);
 
       const totalPapers = value.reduce((sum, yg) => sum + (yg.papers ? yg.papers.length : 0), 0);
 
