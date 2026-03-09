@@ -4,16 +4,16 @@
       "year": 2026,
       "papers": [
         {
-          "authors": "Synthetic Scientist, Peter Placeholder, Four-Zero-Four Error",
-          "date": "2026",
-          "bibtexKey": "faketest2026",
-          "journal": "International Journal of Lorem Ipsum",
-          "title": "Exploration of Non-Existent Data: A Study in Virtual Bibliography",
-          "link": "https://doi.org/10.0000/null.v99i0.void",
           "id": 1,
-          "image": "/assets/images/papers/default.jpg",
+          "title": "lushao qidong",
+          "journal": "International Journal of Lorem Ipsum",
+          "date": "2026",
           "year": 2026,
-          "doi": "10.0000/null.v99i0.void"
+          "authors": "hsl, Peter Placeholder, Four-Zero-Four Error",
+          "link": "https://doi.org/10.0000/null.v99i0.void",
+          "doi": "10.0000/null.v99i0.void",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "faketest2026"
         }
       ]
     }
