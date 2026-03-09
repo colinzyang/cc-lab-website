@@ -95,32 +95,33 @@
 
       items.forEach((entry, index) => {
         try {
-          const fields = entry.fields || {};
-          const title = removeLatexBraces(fields.title || fields.TITLE || '');
+          // bibtex-parse-js uses entryTags, not fields
+          const tags = entry.entryTags || entry.fields || {};
+          const title = removeLatexBraces(tags.title || tags.TITLE || '');
 
           if (!title) {
-            errors.push(`Entry "${entry.key || index + 1}": missing title`);
+            errors.push(`Entry "${entry.citationKey || entry.key || index + 1}": missing title`);
             return;
           }
 
-          const year = parseInt(fields.year || fields.YEAR || '0', 10);
+          const year = parseInt(tags.year || tags.YEAR || '0', 10);
           if (!year) {
-            errors.push(`Entry "${entry.key || index + 1}": missing year`);
+            errors.push(`Entry "${entry.citationKey || entry.key || index + 1}": missing year`);
             return;
           }
 
           const journal = removeLatexBraces(
-            fields.journal || fields.JOURNAL ||
-            fields.booktitle || fields.BOOKTITLE || ''
+            tags.journal || tags.JOURNAL ||
+            tags.booktitle || tags.BOOKTITLE || ''
           );
-          const rawAuthors = fields.author || fields.AUTHOR || '';
+          const rawAuthors = tags.author || tags.AUTHOR || '';
           const authors = convertAuthorFormat(rawAuthors);
-          const doi = fields.doi || fields.DOI || '';
-          const link = doi ? `https://doi.org/${doi}` : (fields.url || fields.URL || '');
-          const month = fields.month || fields.MONTH;
+          const doi = tags.doi || tags.DOI || '';
+          const link = doi ? `https://doi.org/${doi}` : (tags.url || tags.URL || '');
+          const month = tags.month || tags.MONTH;
           const date = formatDate(month, year);
-          const eprint = fields.eprint || fields.EPRINT;
-          const eprinttype = fields.eprinttype || fields.EPRINTTYPE || fields.archiveprefix || fields.ARCHIVEPREFIX;
+          const eprint = tags.eprint || tags.EPRINT;
+          const eprinttype = tags.eprinttype || tags.EPRINTTYPE || tags.archiveprefix || tags.ARCHIVEPREFIX;
           const preprint = detectPreprint(eprint, eprinttype);
 
           const publication = {
@@ -135,7 +136,7 @@
             preprint_url: preprint ? preprint.url : undefined,
             preprint_label: preprint ? preprint.label : undefined,
             image: '/assets/images/papers/default.jpg',
-            bibtexKey: entry.key?.toLowerCase(),
+            bibtexKey: (entry.citationKey || entry.key || '').toLowerCase(),
           };
 
           // Clean up undefined values
@@ -145,7 +146,7 @@
 
           entries.push(publication);
         } catch (e) {
-          errors.push(`Entry "${entry.key || index + 1}": ${e.message}`);
+          errors.push(`Entry "${entry.citationKey || entry.key || index + 1}": ${e.message}`);
         }
       });
     } catch (e) {
