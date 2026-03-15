@@ -1,19 +1,89 @@
 {
   "publications": [
     {
-      "year": 2024,
+      "year": 2025,
       "papers": [
         {
           "id": 1,
-          "title": "Exploration of Non-Existent Data: A Study in Virtual Bibliography",
-          "journal": "International Journal of Lorem Ipsum",
+          "title": "[Placeholder] To be replaced with actual publication - Molecular Dynamics Simulation Study",
+          "journal": "Journal of Computational Chemistry",
+          "date": "2025",
+          "year": 2025,
+          "authors": "CC Lab Members",
+          "link": "#",
+          "doi": "",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "placeholder2025a"
+        },
+        {
+          "id": 2,
+          "title": "[Placeholder] To be replaced with actual publication - Protein Structure Analysis",
+          "journal": "Bioinformatics",
+          "date": "2025",
+          "year": 2025,
+          "authors": "CC Lab Members",
+          "link": "#",
+          "doi": "",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "placeholder2025b"
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "papers": [
+        {
+          "id": 3,
+          "title": "[Placeholder] To be replaced with actual publication - Structural Bioinformatics Methods",
+          "journal": "PLOS Computational Biology",
           "date": "2024",
           "year": 2024,
-          "authors": "Synthetic hsl, Peter Placeholder, Four-Zero-Four Error",
-          "link": "https://doi.org/10.0000/null.v99i0.void",
-          "doi": "10.0000/null.v99i0.void",
+          "authors": "CC Lab Members",
+          "link": "#",
+          "doi": "",
           "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "faketest2026"
+          "bibtexKey": "placeholder2024a"
+        },
+        {
+          "id": 4,
+          "title": "[Placeholder] To be replaced with actual publication - Drug Discovery Applications",
+          "journal": "Journal of Chemical Information and Modeling",
+          "date": "2024",
+          "year": 2024,
+          "authors": "CC Lab Members",
+          "link": "#",
+          "doi": "",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "placeholder2024b"
+        },
+        {
+          "id": 5,
+          "title": "[Placeholder] To be replaced with actual publication - Machine Learning in Biology",
+          "journal": "Nature Communications",
+          "date": "2024",
+          "year": 2024,
+          "authors": "CC Lab Members",
+          "link": "#",
+          "doi": "",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "placeholder2024c"
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "papers": [
+        {
+          "id": 6,
+          "title": "[Placeholder] To be replaced with actual publication - Early Stage Research Output",
+          "journal": "Scientific Reports",
+          "date": "2023",
+          "year": 2023,
+          "authors": "CC Lab Members",
+          "link": "#",
+          "doi": "",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "placeholder2023a"
         }
       ]
     }

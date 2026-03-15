@@ -5,21 +5,21 @@ import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 
 const TOOLS = [
   {
-    name: "FoldPred-X",
+    name: "FoldPred-X Placeholder",
     description: "A state-of-the-art deep learning tool for predicting protein folding pathways in milliseconds.",
     icon: <Terminal className="w-6 h-6" />,
     tags: ["Python", "PyTorch", "CLI"],
     link: "#"
   },
   {
-    name: "BioDyn-DB",
+    name: "BioDyn-DB Placeholder",
     description: "Comprehensive database of molecular dynamics trajectories for G-protein coupled receptors.",
     icon: <Database className="w-6 h-6" />,
     tags: ["Database", "Web Access"],
     link: "#"
   },
   {
-    name: "SeqAlign-GPU",
+    name: "SeqAlign-GPU Placeholder",
     description: "GPU-accelerated sequence alignment library specifically optimized for long-read sequencing data.",
     icon: <Github className="w-6 h-6" />,
     tags: ["C++", "CUDA", "Open Source"],
