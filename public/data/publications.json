@@ -1,31 +1,48 @@
 {
   "publications": [
     {
+      "year": 2026,
+      "papers": [
+        {
+          "id": 32,
+          "title": "Multi-strategy embedded framework for neoantigen vaccine maturation",
+          "journal": "Scientific Reports",
+          "date": "Jan 2026",
+          "year": 2026,
+          "authors": "Guanqiao Zhang, Yaqi Fu, Kevin C. Chan, Ruofan Jin, Yuxuan Yang, Lei Fu, Ruhong Zhou",
+          "link": "https://doi.org/10.1038/s41598-025-34618-8",
+          "doi": "10.1038/s41598-025-34618-8",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "zhang_multi-strategy_2026"
+        }
+      ]
+    },
+    {
       "year": 2025,
       "papers": [
         {
-          "id": 1,
-          "title": "[Placeholder] To be replaced with actual publication - Molecular Dynamics Simulation Study",
-          "journal": "Journal of Computational Chemistry",
-          "date": "2025",
+          "id": 30,
+          "title": "Genomic signatures associated with the evolutionary loss of egg yolk in parasitoid wasps",
+          "journal": "Proceedings of the National Academy of Sciences",
+          "date": "Apr 2025",
           "year": 2025,
-          "authors": "CC Lab Members",
-          "link": "#",
-          "doi": "",
+          "authors": "Xianxin Zhao, Yuanyuan Liu, Bo Yuan, Zhichao Cao, Yi Yang, Chun He, Kevin C. Chan, Shan Xiao, Haiwei Lin, Qi Fang, Gongyin Ye, Xinhai Ye",
+          "link": "https://doi.org/10.1073/pnas.2422292122",
+          "doi": "10.1073/pnas.2422292122",
           "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "placeholder2025a"
+          "bibtexKey": "zhao_genomic_2025"
         },
         {
-          "id": 2,
-          "title": "[Placeholder] To be replaced with actual publication - Protein Structure Analysis",
-          "journal": "Bioinformatics",
-          "date": "2025",
+          "id": 31,
+          "title": "A free energy perturbation-assisted machine learning strategy for mimotope screening in neoantigen-based vaccine design",
+          "journal": "Briefings in Bioinformatics",
+          "date": "Jul 2025",
           "year": 2025,
-          "authors": "CC Lab Members",
-          "link": "#",
-          "doi": "",
+          "authors": "Qinglu Zhong, Kevin C Chan, Lei Fu, Ruhong Zhou",
+          "link": "https://doi.org/10.1093/bib/bbaf254",
+          "doi": "10.1093/bib/bbaf254",
           "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "placeholder2025b"
+          "bibtexKey": "zhong_free_2025"
         }
       ]
     },
@@ -33,40 +50,16 @@
       "year": 2024,
       "papers": [
         {
-          "id": 3,
-          "title": "[Placeholder] To be replaced with actual publication - Structural Bioinformatics Methods",
-          "journal": "PLOS Computational Biology",
-          "date": "2024",
+          "id": 28,
+          "title": "In silico design of high-affinity antigenic peptides for HLA-B44",
+          "journal": "International Journal of Biological Macromolecules",
+          "date": "May 2024",
           "year": 2024,
-          "authors": "CC Lab Members",
-          "link": "#",
-          "doi": "",
+          "authors": "Mei Feng, Kevin C. Chan, Qinglu Zhong, Ruhong Zhou",
+          "link": "https://doi.org/10.1016/j.ijbiomac.2024.131356",
+          "doi": "10.1016/j.ijbiomac.2024.131356",
           "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "placeholder2024a"
-        },
-        {
-          "id": 4,
-          "title": "[Placeholder] To be replaced with actual publication - Drug Discovery Applications",
-          "journal": "Journal of Chemical Information and Modeling",
-          "date": "2024",
-          "year": 2024,
-          "authors": "CC Lab Members",
-          "link": "#",
-          "doi": "",
-          "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "placeholder2024b"
-        },
-        {
-          "id": 5,
-          "title": "[Placeholder] To be replaced with actual publication - Machine Learning in Biology",
-          "journal": "Nature Communications",
-          "date": "2024",
-          "year": 2024,
-          "authors": "CC Lab Members",
-          "link": "#",
-          "doi": "",
-          "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "placeholder2024c"
+          "bibtexKey": "feng_silico_2024"
         }
       ]
     },
@@ -74,16 +67,375 @@
       "year": 2023,
       "papers": [
         {
-          "id": 6,
-          "title": "[Placeholder] To be replaced with actual publication - Early Stage Research Output",
-          "journal": "Scientific Reports",
+          "id": 17,
+          "title": "Novel Inhibitory Role of Fenofibric Acid by Targeting Cryptic Site on the RBD of SARS-CoV-2",
+          "journal": "Biomolecules",
           "date": "2023",
           "year": 2023,
-          "authors": "CC Lab Members",
-          "link": "#",
-          "doi": "",
+          "authors": "Jianxiang Huang, Kevin Chun Chan, Ruhong Zhou",
+          "link": "https://doi.org/10.3390/biom13020359",
+          "doi": "10.3390/biom13020359",
           "image": "/assets/images/papers/default.jpg",
-          "bibtexKey": "placeholder2023a"
+          "bibtexKey": "huang_novel_2023"
+        },
+        {
+          "id": 18,
+          "title": "Conformational cycle of human polyamine transporter ATP13A2",
+          "journal": "Nature Communications",
+          "date": "Apr 2023",
+          "year": 2023,
+          "authors": "Jianqiang Mu, Chenyang Xue, Lei Fu, Zongjun Yu, Minhan Nie, Mengqi Wu, Xinmeng Chen, Kun Liu, Ruiqian Bu, Ying Huang, Baisheng Yang, Jianming Han, Qianru Jiang, Kevin Chun Chan, Ruhong Zhou, Huilin Li, Ancheng Huang, Yong Wang, Zhongmin Liu",
+          "link": "https://doi.org/10.1038/s41467-023-37741-0",
+          "doi": "10.1038/s41467-023-37741-0",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "mu_conformational_2023"
+        },
+        {
+          "id": 19,
+          "title": "A mutagenesis study of autoantigen optimization for potential T1D vaccine design",
+          "journal": "Proceedings of the National Academy of Sciences",
+          "date": "Apr 2023",
+          "year": 2023,
+          "authors": "Yi Song, David R. Bell, Rizwan Ahmed, Kevin Chun Chan, Sangyun Lee, Abdel Rahim A. Hamad, Ruhong Zhou",
+          "link": "https://doi.org/10.1073/pnas.2214430120",
+          "doi": "10.1073/pnas.2214430120",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "song_mutagenesis_2023"
+        },
+        {
+          "id": 20,
+          "title": "Structural basis of BAM-mediated outer membrane β-barrel protein assembly",
+          "journal": "Nature",
+          "date": "May 2023",
+          "year": 2023,
+          "authors": "Chongrong Shen, Shenghai Chang, Qinghua Luo, Kevin Chun Chan, Zhibo Zhang, Bingnan Luo, Teng Xie, Guangwen Lu, Xiaofeng Zhu, Xiawei Wei, Changjiang Dong, Ruhong Zhou, Xing Zhang, Xiaodi Tang, Haohao Dong",
+          "link": "https://doi.org/10.1038/s41586-023-05988-8",
+          "doi": "10.1038/s41586-023-05988-8",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "shen_structural_2023"
+        },
+        {
+          "id": 23,
+          "title": "Molecular Dynamics Refinement of Open State Serotonin 5-HT3A Receptor Structures",
+          "journal": "Journal of Chemical Information and Modeling",
+          "date": "Feb 2023",
+          "year": 2023,
+          "authors": "Zoe Li, Kevin Chun Chan, Jonathan D. Nickels, Xiaolin Cheng",
+          "link": "https://doi.org/10.1021/acs.jcim.2c01441",
+          "doi": "10.1021/acs.jcim.2c01441",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "li_molecular_2023"
+        },
+        {
+          "id": 26,
+          "title": "The rigidity of a structural bridge on HLA-I binding groove explains its differential outcome in cancer immune response",
+          "journal": "International Journal of Biological Macromolecules",
+          "date": "Dec 2023",
+          "year": 2023,
+          "authors": "Hong Zhou, Kevin Chun Chan, Damiano Buratto, Ruhong Zhou",
+          "link": "https://doi.org/10.1016/j.ijbiomac.2023.127199",
+          "doi": "10.1016/j.ijbiomac.2023.127199",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "zhou_rigidity_2023"
+        },
+        {
+          "id": 27,
+          "title": "Comprehensive isoform-level analysis reveals the contribution of alternative isoforms to venom evolution and repertoire diversity",
+          "journal": "Genome Research",
+          "date": "Sep 2023",
+          "year": 2023,
+          "authors": "Xinhai Ye, Chun He, Yi Yang, Yu H. Sun, Shijiao Xiong, Kevin C. Chan, Yuxuan Si, Shan Xiao, Xianxin Zhao, Haiwei Lin, Yang Mei, Yufeng Yao, Gongyin Ye, Fei Wu, Qi Fang",
+          "link": "https://doi.org/10.1101/gr.277707.123",
+          "doi": "10.1101/gr.277707.123",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "ye_comprehensive_2023"
+        },
+        {
+          "id": 29,
+          "title": "Apposed networks of interacting TCRs and BCRs exhibiting mosaicked CDR3 sequences made of fixed junctional motifs",
+          "journal": "",
+          "date": "Jan 2023",
+          "year": 2023,
+          "authors": "Rizwan Ahmed, Neha Majety, Kevin C. Chan, Adebola Giwa, Joseph Heinemann, Hao Zhang, Joseph Margolick, Rafid Al-Hallaf, Prajita Paul, David R. Bell, Yi Song, Sangyun Lee, Ruhong Zhou, Risa M Wolfe, Thomas Donner, Chunfa Jie, Abdel Rahim A Hamad",
+          "link": "https://doi.org/10.1101/2023.05.06.539704",
+          "doi": "10.1101/2023.05.06.539704",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "rizwan_ahmed_apposed_2023"
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "papers": [
+        {
+          "id": 21,
+          "title": "Electrostatic Contributions to the Binding Free Energy of Nicotine to the Acetylcholine Binding Protein",
+          "journal": "The Journal of Physical Chemistry B",
+          "date": "Nov 2022",
+          "year": 2022,
+          "authors": "Zoe Li, Kevin Chun Chan, Jonathan D. Nickels, Xiaolin Cheng",
+          "link": "https://doi.org/10.1021/acs.jpcb.2c04641",
+          "doi": "10.1021/acs.jpcb.2c04641",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "li_electrostatic_2022"
+        },
+        {
+          "id": 22,
+          "title": "SARS-CoV-2 Delta Variant: Interplay between Individual Mutations and Their Allosteric Synergy",
+          "journal": "Biomolecules",
+          "date": "2022",
+          "year": 2022,
+          "authors": "Kevin Chun Chan, Yi Song, Zheng Xu, Chun Shang, Ruhong Zhou",
+          "link": "https://doi.org/10.3390/biom12121742",
+          "doi": "10.3390/biom12121742",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "chan_sars-cov-2_2022"
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "papers": [
+        {
+          "id": 15,
+          "title": "Computational and Experimental Approaches to Investigate Lipid Nanoparticles as Drug and Gene Delivery Systems",
+          "journal": "Current Topics in Medicinal Chemistry",
+          "date": "Jan 2021",
+          "year": 2021,
+          "authors": "Kevin Chun Chan, Shi Du, Yizhou Dong, Xiaolin Cheng",
+          "link": "https://doi.org/10.2174/1568026620666201126162945",
+          "doi": "10.2174/1568026620666201126162945",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "chan_computational_2021"
+        },
+        {
+          "id": 16,
+          "title": "Nanometer-resolution in situ structure of the SARS-CoV-2 postfusion spike protein",
+          "journal": "Proceedings of the National Academy of Sciences",
+          "date": "Nov 2021",
+          "year": 2021,
+          "authors": "Linhua Tai, Guoliang Zhu, Minnan Yang, Lei Cao, Xiaorui Xing, Guoliang Yin, Kevin Chun Chan, Chengfeng Qin, Zihe Rao, Xiangxi Wang, Fei Sun, Yun Zhu",
+          "link": "https://doi.org/10.1073/pnas.2112703118",
+          "doi": "10.1073/pnas.2112703118",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "tai_nanometer-resolution_2021"
+        },
+        {
+          "id": 24,
+          "title": "Structural Insights into gp16 ATPase in the Bacteriophage ϕ29 DNA Packaging Motor",
+          "journal": "Biochemistry",
+          "date": "Mar 2021",
+          "year": 2021,
+          "authors": "Abdullah F. U. H. Saeed, Kevin Chun Chan, Hongxin Guan, Bing Gong, Peixuan Guo, Xiaolin Cheng, Songying Ouyang",
+          "link": "https://doi.org/10.1021/acs.biochem.0c00935",
+          "doi": "10.1021/acs.biochem.0c00935",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "saeed_structural_2021"
+        },
+        {
+          "id": 25,
+          "title": "Molecular Insight into AC Electric Field Enhanced Removal of Protein Aggregates from a Material Surface",
+          "journal": "The Journal of Physical Chemistry B",
+          "date": "Nov 2021",
+          "year": 2021,
+          "authors": "Mei Feng, Sangyun Lee, Chun Chan, Ruhong Zhou",
+          "link": "https://doi.org/10.1021/acs.jpcb.1c05682",
+          "doi": "10.1021/acs.jpcb.1c05682",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "feng_molecular_2021"
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "papers": [
+        {
+          "id": 9,
+          "title": "Rational Design of Small Molecules to Enhance Genome Editing Efficiency by Selectively Targeting Distinct Functional States of CRISPR-Cas12a",
+          "journal": "Bioconjugate Chemistry",
+          "date": "Mar 2020",
+          "year": 2020,
+          "authors": "Wenqing Li, Kevin Chun Chan, Chunxi Zeng, Rolf Turk, Mark A. Behlke, Xiaolin Cheng, Yizhou Dong",
+          "link": "https://doi.org/10.1021/acs.bioconjchem.0c00062",
+          "doi": "10.1021/acs.bioconjchem.0c00062",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "li_rational_2020"
+        },
+        {
+          "id": 12,
+          "title": "A computational study of effects on membrane recruitment of the polar linkers in Vitamin E derivatives",
+          "journal": "Biochimica et Biophysica Acta (BBA) - General Subjects",
+          "date": "Oct 2020",
+          "year": 2020,
+          "authors": "Sijin Wu, Kevin Chun Chan, Tony Zhuang, Pui-Kai Li, Xiaolin Cheng",
+          "link": "https://doi.org/10.1016/j.bbagen.2020.129655",
+          "doi": "10.1016/j.bbagen.2020.129655",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "wu_computational_2020"
+        },
+        {
+          "id": 14,
+          "title": "Molecular mechanism of mitochondrial phosphatidate transfer by Ups1",
+          "journal": "Communications Biology",
+          "date": "Aug 2020",
+          "year": 2020,
+          "authors": "Jiuwei Lu, Kevin Chun Chan, Leiye Yu, Jun Fan, Fei Sun, Yujia Zhai",
+          "link": "https://doi.org/10.1038/s42003-020-01121-x",
+          "doi": "10.1038/s42003-020-01121-x",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "lu_molecular_2020"
+        }
+      ]
+    },
+    {
+      "year": 2019,
+      "papers": [
+        {
+          "id": 4,
+          "title": "ACAP1 assembles into an unusual protein lattice for membrane deformation through multiple stages",
+          "journal": "PLOS Computational Biology",
+          "date": "Jul 2019",
+          "year": 2019,
+          "authors": "Kevin Chun Chan, Xiaoyun Pang, Yan Zhang, Tongxin Niu, Shengjiang Yang, Daohui Zhao, Jian Li, Lanyuan Lu, Victor W. Hsu, Jian Zhou, Fei Sun, Jun Fan",
+          "link": "https://doi.org/10.1371/journal.pcbi.1007081",
+          "doi": "10.1371/journal.pcbi.1007081",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "chan_acap1_2019"
+        },
+        {
+          "id": 5,
+          "title": "Controlling the Revolving and Rotating Motion Direction of Asymmetric Hexameric Nanomotor by Arginine Finger and Channel Chirality",
+          "journal": "ACS Nano",
+          "date": "Jun 2019",
+          "year": 2019,
+          "authors": "Peixuan Guo, Dana Driver, Zhengyi Zhao, Zhen Zheng, Kevin Chun Chan, Xiaolin Cheng",
+          "link": "https://doi.org/10.1021/acsnano.8b08849",
+          "doi": "10.1021/acsnano.8b08849",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "guo_controlling_2019"
+        },
+        {
+          "id": 8,
+          "title": "Nanotoxicity of Boron Nitride Nanosheet to Bacterial Membranes",
+          "journal": "Langmuir",
+          "date": "May 2019",
+          "year": 2019,
+          "authors": "Yonghui Zhang, Kevin Chun Chan, Zhen Li, Jiale Ma, Qiangqiang Meng, Chunyi Zhi, Hongyan Sun, Jun Fan",
+          "link": "https://doi.org/10.1021/acs.langmuir.9b00025",
+          "doi": "10.1021/acs.langmuir.9b00025",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "zhang_nanotoxicity_2019"
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "papers": [
+        {
+          "id": 2,
+          "title": "Temperature-Dependent Lipid Extraction from Membranes by Boron Nitride Nanosheets",
+          "journal": "ACS Nano",
+          "date": "Mar 2018",
+          "year": 2018,
+          "authors": "Zhen Li, Yonghui Zhang, Kevin Chun Chan, Chunyi Zhi, Xiaolin Cheng, Jun Fan",
+          "link": "https://doi.org/10.1021/acsnano.7b09095",
+          "doi": "10.1021/acsnano.7b09095",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "li_temperature-dependent_2018"
+        },
+        {
+          "id": 3,
+          "title": "Lipid extraction by boron nitride nanosheets from liquid-ordered and liquid-disordered nanodomains",
+          "journal": "Nanoscale",
+          "date": "2018",
+          "year": 2018,
+          "authors": "Yonghui Zhang, Kevin Chun Chan, Zhen Li, Jiale Ma, Qiangqiang Meng, Xiaolin Cheng, Jun Fan",
+          "link": "https://doi.org/10.1039/C8NR02018C",
+          "doi": "10.1039/C8NR02018C",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "zhang_lipid_2018"
+        },
+        {
+          "id": 6,
+          "title": "Ordering of lipid membranes altered by boron nitride nanosheets",
+          "journal": "Physical Chemistry Chemical Physics",
+          "date": "2018",
+          "year": 2018,
+          "authors": "Yonghui Zhang, Zhen Li, Kevin Chun Chan, Jiale Ma, Chunyi Zhi, Xiaolin Cheng, Jun Fan",
+          "link": "https://doi.org/10.1039/C7CP07136A",
+          "doi": "10.1039/C7CP07136A",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "zhang_ordering_2018"
+        },
+        {
+          "id": 7,
+          "title": "Molecular Consequences of the Myopathy-Related D286G Mutation on Actin Function",
+          "journal": "Frontiers in Physiology",
+          "date": "Dec 2018",
+          "year": 2018,
+          "authors": "Jun Fan, Kevin Chun Chan, Elyshia L. McNamara, Kristen J. Nowak, Hiroyuki Iwamoto, Julien Ochala",
+          "link": "https://doi.org/10.3389/fphys.2018.01756",
+          "doi": "10.3389/fphys.2018.01756",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "fan_molecular_2018"
+        },
+        {
+          "id": 11,
+          "title": "Alkyl Tail Aggregations Break Long-Range Ordering of Ionic Liquids Confined in Subnanometer Pores",
+          "journal": "The Journal of Physical Chemistry C",
+          "date": "Dec 2018",
+          "year": 2018,
+          "authors": "Jiale Ma, Qiangqiang Meng, Kevin Chun Chan, Zhen Li, Yonghui Zhang, Jun Fan",
+          "link": "https://doi.org/10.1021/acs.jpcc.8b06263",
+          "doi": "10.1021/acs.jpcc.8b06263",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "ma_alkyl_2018"
+        }
+      ]
+    },
+    {
+      "year": 2017,
+      "papers": [
+        {
+          "id": 13,
+          "title": "Molecular Details of the PH Domain of ACAP1 $^\\textrmBAR-PH$ Protein Binding to PIP-Containing Membrane",
+          "journal": "The Journal of Physical Chemistry B",
+          "date": "Apr 2017",
+          "year": 2017,
+          "authors": "Kevin Chun Chan, Lanyuan Lu, Fei Sun, Jun Fan",
+          "link": "https://doi.org/10.1021/acs.jpcb.6b09563",
+          "doi": "10.1021/acs.jpcb.6b09563",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "chan_molecular_2017"
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "papers": [
+        {
+          "id": 1,
+          "title": "Myopathy-inducing mutation H40Y in ACTA1 hampers actin filament structure and function",
+          "journal": "Biochimica et biophysica acta - Molecular Basis of Disease",
+          "date": "Aug 2016",
+          "year": 2016,
+          "authors": "Kevin Chun Chan, Jun Fan, Andrew E Messer, Steve B Marston, Hiroyuki Iwamoto, Julien Ochala",
+          "link": "https://doi.org/10.1016/j.bbadis.2016.04.013",
+          "doi": "10.1016/j.bbadis.2016.04.013",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "chan_myopathy-inducing_2016"
+        },
+        {
+          "id": 10,
+          "title": "Multiscale molecular dynamics simulations of membrane remodeling by Bin/Amphiphysin/Rvs family proteins",
+          "journal": "Chinese Physics B",
+          "date": "Jan 2016",
+          "year": 2016,
+          "authors": "Kevin Chun Chan, Haohua Wen, Lanyuan Lu, Jun Fan",
+          "link": "https://doi.org/10.1088/1674-1056/25/1/018707",
+          "doi": "10.1088/1674-1056/25/1/018707",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "chan_multiscale_2016"
         }
       ]
     }
