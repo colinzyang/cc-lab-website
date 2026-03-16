@@ -75,7 +75,6 @@ collections:
   # 出版物集合
   - name: "publications"
     label: "Publications"
-    identifier_field: "id"
     editor:
       preview: false
     files:

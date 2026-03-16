@@ -191,17 +191,47 @@
     // Helper to normalize value to always be an array
     getNormalizedValue() {
       let value = this.props.value;
+      console.log('BibTeX Widget - raw props.value type:', typeof value, value);
+
       if (!value) {
         return [];
       }
+
+      // Handle Immutable.js objects (Decap CMS uses Immutable.js internally)
+      if (value && typeof value.toJS === 'function') {
+        console.log('BibTeX Widget - detected Immutable.js object, converting');
+        value = value.toJS();
+      }
+
+      // Handle Proxy objects by JSON serialization
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
+        try {
+          // Check if it's a plain object with publications key
+          if (value.publications && Array.isArray(value.publications)) {
+            console.log('BibTeX Widget - found publications array in object');
+            return value.publications;
+          }
+          // Try to convert via JSON if it has unusual prototype
+          const jsonStr = JSON.stringify(value);
+          if (jsonStr && jsonStr !== '{}') {
+            const parsed = JSON.parse(jsonStr);
+            console.log('BibTeX Widget - JSON parsed value:', parsed);
+            if (Array.isArray(parsed)) {
+              return parsed;
+            }
+            if (parsed.publications && Array.isArray(parsed.publications)) {
+              return parsed.publications;
+            }
+          }
+        } catch (e) {
+          console.warn('BibTeX Widget - JSON conversion failed:', e);
+        }
+      }
+
       if (Array.isArray(value)) {
         return value;
       }
-      // Handle case where CMS passes the full object instead of just the field value
-      if (value.publications && Array.isArray(value.publications)) {
-        console.warn('BibTeX Widget - received object with publications key, extracting array');
-        return value.publications;
-      }
+
       console.warn('BibTeX Widget - unexpected value format:', value);
       return [];
     },
