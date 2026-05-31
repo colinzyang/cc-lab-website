@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Link as LinkIcon } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { ScrollToTopButton } from './ScrollToTopButton';
+import { AuthorList } from './AuthorList';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadPublications } from '../src/lib/dataLoader';
 import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
@@ -10,6 +11,10 @@ interface PublicationGroup {
   year: number;
   papers: any[];
 }
+
+// Prefer a DOI-derived link; fall back to a stored link only for (rare) DOI-less entries.
+const paperHref = (paper: any): string | undefined =>
+  paper.doi ? `https://doi.org/${paper.doi}` : paper.link;
 
 export const Publication: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
@@ -73,16 +78,15 @@ export const Publication: React.FC = () => {
               {group.papers.map((paper) => (
                 <div key={paper.id} className="group">
                   <h3 className="text-xl font-medium text-slate-900 dark:text-text leading-tight mb-2 group-hover:text-primary dark:group-hover:text-primary-dark transition-colors">
-                    <a href={paper.link} target="_blank" rel="noopener noreferrer">{paper.title}</a>
+                    {paperHref(paper) ? (
+                      <a href={paperHref(paper)} target="_blank" rel="noopener noreferrer">{paper.title}</a>
+                    ) : (
+                      paper.title
+                    )}
                   </h3>
-                  <p className="text-slate-600 dark:text-subtext mb-1">{paper.authors}</p>
+                  <AuthorList authors={paper.authors} />
                   <div className="flex items-center gap-4 text-sm flex-wrap">
                     <span className="font-serif italic text-slate-500">{paper.journal}</span>
-                    {paper.doi && (
-                      <a href={paper.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary dark:text-primary-dark text-xs font-bold uppercase tracking-wider hover:underline">
-                        <LinkIcon className="w-3 h-3" /> DOI
-                      </a>
-                    )}
                     {paper.preprint_url && (
                       <a href={paper.preprint_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-primary dark:text-primary-dark text-xs font-bold uppercase tracking-wider hover:underline">
                         <FileText className="w-3 h-3" /> {paper.preprint_label}

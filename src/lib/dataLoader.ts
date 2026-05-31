@@ -25,7 +25,7 @@ export interface Publication {
   date: string;
   year: number;
   authors: string;
-  link: string;
+  link?: string;
   doi?: string;
   preprint_url?: string;
   preprint_label?: string;
@@ -129,14 +129,29 @@ export async function loadMembers() {
   };
 }
 
+// Map a publication date like "Jul 2025" to a month number (1-12); 0 when only a year is given.
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+function monthIndex(date: string | undefined): number {
+  if (!date) return 0;
+  const idx = MONTHS.indexOf(date.trim().slice(0, 3).toLowerCase());
+  return idx === -1 ? 0 : idx + 1;
+}
+
 export async function loadPublications() {
   const data = await loadJSON<any>('/data/publications.json');
 
   // Read from the unified 'publications' field
   const publications = data.publications || data.byYear || [];
 
-  // Sort by year descending (newest first)
-  const sortedPublications = [...publications].sort((a, b) => b.year - a.year);
+  // Sort by year descending (newest first), papers within each year by month descending.
+  const sortedPublications = [...publications]
+    .sort((a, b) => b.year - a.year)
+    .map((group: any) => ({
+      ...group,
+      papers: [...(group.papers || [])].sort(
+        (a: any, b: any) => monthIndex(b.date) - monthIndex(a.date)
+      ),
+    }));
 
   return {
     PUBLICATIONS_BY_YEAR: sortedPublications,

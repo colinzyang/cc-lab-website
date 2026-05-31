@@ -117,7 +117,8 @@
           const rawAuthors = tags.author || tags.AUTHOR || '';
           const authors = convertAuthorFormat(rawAuthors);
           const doi = tags.doi || tags.DOI || '';
-          const link = doi ? `https://doi.org/${doi}` : (tags.url || tags.URL || '');
+          // Only store an explicit link for DOI-less entries; otherwise it is derived from the DOI.
+          const link = doi ? undefined : (tags.url || tags.URL || '');
           const month = tags.month || tags.MONTH;
           const date = formatDate(month, year);
           const eprint = tags.eprint || tags.EPRINT;
@@ -489,15 +490,6 @@
                   onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'doi', e.target.value),
                   style: styles.inputField,
                 })
-              ),
-              h('div', null,
-                h('label', { style: { ...styles.label, fontSize: '12px' } }, 'Link'),
-                h('input', {
-                  type: 'text',
-                  value: paper.link || '',
-                  onChange: (e) => this.handleEditExisting(yearGroup.year, paperIndex, 'link', e.target.value),
-                  style: styles.inputField,
-                })
               )
             )
           )
@@ -764,16 +756,6 @@
                     onChange: (e) => this.handleEditEntry(index, 'doi', e.target.value),
                     style: styles.inputField,
                     placeholder: '10.1234/example',
-                  })
-                ),
-                h('div', null,
-                  h('label', { style: { ...styles.label, fontSize: '12px' } }, 'Link'),
-                  h('input', {
-                    type: 'text',
-                    value: entry.link,
-                    onChange: (e) => this.handleEditEntry(index, 'link', e.target.value),
-                    style: styles.inputField,
-                    placeholder: 'https://doi.org/...',
                   })
                 )
               ),
