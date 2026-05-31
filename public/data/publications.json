@@ -26,6 +26,28 @@
           "image": "/assets/images/papers/default.jpg",
           "year": 2026,
           "doi": "10.1093/bib/bbag048"
+        },
+        {
+          "id": 34,
+          "title": "Inhibition of VEGF165-Induced Angiogenesis by Gold Nanoparticles through HQGQH as the Primary Binding Site",
+          "journal": "Journal of Chemical Information and Modeling",
+          "date": "2026",
+          "year": 2026,
+          "authors": "Jiayi Wan, Yihan Zhou, Jiajun Zhu, Yutong Lu, Yuting Lyu, Hongke Hao, Zhiliang Lu, Carrie A Duckworth, Yiheng Liu, Hanyu Zhou, others",
+          "link": "",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "wan2026inhibition"
+        },
+        {
+          "id": 35,
+          "title": "Polymer--mRNA complexes for monocyte-trafficked, lymph node-targeted cancer vaccination",
+          "journal": "Nature biomedical engineering",
+          "date": "2026",
+          "year": 2026,
+          "authors": "Qiongzhe Ren, Xiaofei Zhao, Lili Zhou, Ruonan Ye, Liguo Chen, Keyun Ren, Xijun Piao, Yihan Zhou, Yiming Qi, Kevin C Chan, others",
+          "link": "",
+          "image": "/assets/images/papers/default.jpg",
+          "bibtexKey": "ren2026polymer"
         }
       ]
     },
