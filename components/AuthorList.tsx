@@ -25,12 +25,12 @@ const renderName = (name: string): React.ReactNode =>
     : name;
 
 interface AuthorListProps {
-  authors: string;
+  authors?: string;
 }
 
 export const AuthorList: React.FC<AuthorListProps> = ({ authors }) => {
   const [expanded, setExpanded] = useState(false);
-  const names = authors.split(', ');
+  const names = (authors || '').split(', ').filter(Boolean);
 
   const baseClass = 'text-slate-600 dark:text-subtext mb-1';
 
