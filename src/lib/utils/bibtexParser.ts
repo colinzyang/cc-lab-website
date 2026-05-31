@@ -13,7 +13,7 @@ export interface ParsedPublication {
   date: string;
   year: number;
   authors: string;
-  link: string;
+  link?: string;
   doi?: string;
   preprint_url?: string;
   preprint_label?: string;
