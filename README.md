@@ -13,7 +13,7 @@
 
 *Xian Jiaotong-Liverpool University (XJTLU)*
 
-[Live Site](https://cc-lab-xjtlu.netlify.app) · [Report Bug](https://github.com/colinzyang/cc-lab-website/issues) · [Request Feature](https://github.com/colinzyang/cc-lab-website/issues)
+[Live Site](https://cclabweb.netlify.app) · [Report Bug](https://github.com/colinzyang/cc-lab-website/issues) · [Request Feature](https://github.com/colinzyang/cc-lab-website/issues)
 
 </div>
 
