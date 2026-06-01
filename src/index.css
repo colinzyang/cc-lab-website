@@ -1,30 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  /* 品牌主色 */
-  --color-primary: #004a99;              /* 浅色模式 */
-  --color-primary-dark: #89b4fa;         /* 深色模式 - Catppuccin Mocha Blue */
+    /* 品牌主色 */
+    --color-primary: #004a99; /* 浅色模式 */
+    --color-primary-dark: #89b4fa; /* 深色模式 - Catppuccin Mocha Blue */
 
-  /* 浅色模式（保持原有） */
-  --color-background-light: #ffffff;
+    /* 浅色模式（保持原有） */
+    --color-background-light: #ffffff;
 
-  /* 深色模式 - Catppuccin Mocha */
-  --color-background-dark: #1e1e2e;      /* Base */
-  --color-surface: #313244;               /* Surface0 - 用于卡片 */
-  --color-surface-1: #45475a;             /* Surface1 - 用于更深层次 */
-  --color-text: #cdd6f4;                  /* Text */
-  --color-subtext: #a6adc8;               /* Subtext0 */
-  --color-border: #45475a;                /* Surface1 - 边框 */
+    /* 深色模式 - Catppuccin Mocha */
+    --color-background-dark: #1e1e2e; /* Base */
+    --color-surface: #313244; /* Surface0 - 用于卡片 */
+    --color-surface-1: #45475a; /* Surface1 - 用于更深层次 */
+    --color-text: #cdd6f4; /* Text */
+    --color-subtext: #a6adc8; /* Subtext0 */
+    --color-border: #45475a; /* Surface1 - 边框 */
 
-  --font-family-sans: Inter, sans-serif;
-  --font-family-display: Inter, sans-serif;
+    --font-family-sans: Inter, sans-serif;
+    --font-family-display: Inter, sans-serif;
+    --font-family-mono:
+        "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --font-size-huge: 6.5rem;
-  --font-line-height-huge: 0.9;
-  --font-letter-spacing-huge: -0.04em;
+    --font-size-huge: 6.5rem;
+    --font-line-height-huge: 0.9;
+    --font-letter-spacing-huge: -0.04em;
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

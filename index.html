@@ -1,86 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CC Lab @ XJTLU | Structural Bioinformatics & Molecular Dynamics</title>
-    <meta name="description" content="CC Lab at Xi'an Jiaotong-Liverpool University (XJTLU) - Research in structural bioinformatics, molecular dynamics, and biological foundation models for drug discovery and therapeutics engineering." />
-    <meta name="keywords" content="structural bioinformatics, molecular dynamics, drug discovery, computational biology, XJTLU, CC Lab, Chun Chan, RNA therapeutics, protein engineering" />
-    <meta name="author" content="CC Lab @ XJTLU" />
-    <meta name="robots" content="index, follow" />
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cc-lab-xjtlu.netlify.app/" />
-    <meta property="og:title" content="CC Lab @ XJTLU | Structural Bioinformatics & Molecular Dynamics" />
-    <meta property="og:description" content="Research lab combining biological foundation models, molecular dynamics, and structural bioinformatics to decode molecular mechanisms and engineer next-generation therapeutics." />
-    <meta property="og:image" content="/assets/images/og-image.png" />
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://cc-lab-xjtlu.netlify.app/" />
-    <meta name="twitter:title" content="CC Lab @ XJTLU | Structural Bioinformatics & Molecular Dynamics" />
-    <meta name="twitter:description" content="Research lab combining biological foundation models, molecular dynamics, and structural bioinformatics to decode molecular mechanisms and engineer next-generation therapeutics." />
-    <meta name="twitter:image" content="/assets/images/og-image.png" />
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://cc-lab-xjtlu.netlify.app/" />
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ResearchOrganization",
-      "name": "CC Lab @ XJTLU",
-      "alternateName": "CC Lab",
-      "description": "Research lab combining biological foundation models, molecular dynamics, and structural bioinformatics to decode molecular mechanisms and engineer next-generation therapeutics.",
-      "url": "https://cc-lab-xjtlu.netlify.app/",
-      "logo": "https://cc-lab-xjtlu.netlify.app/assets/images/logo.png",
-      "sameAs": [
-        "https://github.com/cc-lab-xjtlu"
-      ],
-      "parentOrganization": {
-        "@type": "EducationalOrganization",
-        "name": "Xi'an Jiaotong-Liverpool University",
-        "url": "https://www.xjtlu.edu.cn"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Suzhou",
-        "addressRegion": "Jiangsu",
-        "addressCountry": "CN"
-      }
-    }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-  <script type="importmap">
-{
-  "imports": {
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "framer-motion": "https://esm.sh/framer-motion@^12.27.5",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-  }
-}
-</script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
-  </head>
-  <body class="bg-background-light text-slate-900 dark:bg-background-dark dark:text-white selection:bg-primary selection:text-white">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            CC Lab @ XJTLU | Structural Bioinformatics & Molecular Dynamics
+        </title>
+        <meta
+            name="description"
+            content="CC Lab at Xi'an Jiaotong-Liverpool University (XJTLU) - Research in structural bioinformatics, molecular dynamics, and biological foundation models for drug discovery and therapeutics engineering."
+        />
+        <meta
+            name="keywords"
+            content="structural bioinformatics, molecular dynamics, drug discovery, computational biology, XJTLU, CC Lab, Chun Chan, RNA therapeutics, protein engineering"
+        />
+        <meta name="author" content="CC Lab @ XJTLU" />
+        <meta name="robots" content="index, follow" />
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://cc-lab-xjtlu.netlify.app/" />
+        <meta
+            property="og:title"
+            content="CC Lab @ XJTLU | Structural Bioinformatics & Molecular Dynamics"
+        />
+        <meta
+            property="og:description"
+            content="Research lab combining biological foundation models, molecular dynamics, and structural bioinformatics to decode molecular mechanisms and engineer next-generation therapeutics."
+        />
+        <meta property="og:image" content="/assets/images/og-image.png" />
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://cc-lab-xjtlu.netlify.app/" />
+        <meta
+            name="twitter:title"
+            content="CC Lab @ XJTLU | Structural Bioinformatics & Molecular Dynamics"
+        />
+        <meta
+            name="twitter:description"
+            content="Research lab combining biological foundation models, molecular dynamics, and structural bioinformatics to decode molecular mechanisms and engineer next-generation therapeutics."
+        />
+        <meta name="twitter:image" content="/assets/images/og-image.png" />
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://cc-lab-xjtlu.netlify.app/" />
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "ResearchOrganization",
+                "name": "CC Lab @ XJTLU",
+                "alternateName": "CC Lab",
+                "description": "Research lab combining biological foundation models, molecular dynamics, and structural bioinformatics to decode molecular mechanisms and engineer next-generation therapeutics.",
+                "url": "https://cc-lab-xjtlu.netlify.app/",
+                "logo": "https://cc-lab-xjtlu.netlify.app/assets/images/logo.png",
+                "sameAs": ["https://github.com/cc-lab-xjtlu"],
+                "parentOrganization": {
+                    "@type": "EducationalOrganization",
+                    "name": "Xi'an Jiaotong-Liverpool University",
+                    "url": "https://www.xjtlu.edu.cn"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Suzhou",
+                    "addressRegion": "Jiangsu",
+                    "addressCountry": "CN"
+                }
+            }
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+            rel="stylesheet"
+        />
+        <script type="importmap">
+            {
+                "imports": {
+                    "vite": "https://esm.sh/vite@^7.3.1",
+                    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+                    "framer-motion": "https://esm.sh/framer-motion@^12.27.5",
+                    "react": "https://esm.sh/react@^19.2.3",
+                    "react/": "https://esm.sh/react@^19.2.3/",
+                    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+                    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+                    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+                }
+            }
+        </script>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <script>
+            if (window.netlifyIdentity) {
+                window.netlifyIdentity.on("init", (user) => {
+                    if (!user) {
+                        window.netlifyIdentity.on("login", () => {
+                            document.location.href = "/admin/";
+                        });
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body
+        class="bg-background-light text-slate-900 dark:bg-background-dark dark:text-white selection:bg-primary selection:text-white"
+    >
+        <div id="root"></div>
+        <script type="module" src="/index.tsx"></script>
+    </body>
 </html>
