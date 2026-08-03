@@ -24,6 +24,25 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Toggles the page texture on #app-shell based on the current route:
+//   "/"                                     → home-texture (full-page grid)
+//   /member, /research, /publication, /news → top-texture (top band only)
+//   anywhere else (e.g. /contact)           → none
+// See the #app-shell.home-texture / .top-texture rules in src/index.css.
+const TOP_TEXTURE_PATHS = ['/member', '/research', '/publication', '/news'];
+const ShellTexture: React.FC = () => {
+  const { pathname } = useLocation();
+
+  React.useEffect(() => {
+    const shell = document.getElementById('app-shell');
+    if (!shell) return;
+    shell.classList.toggle('home-texture', pathname === '/');
+    shell.classList.toggle('top-texture', TOP_TEXTURE_PATHS.includes(pathname));
+  }, [pathname]);
+
+  return null;
+};
+
 // Main content wrapper with conditional breadcrumb
 const MainContent = () => {
   const { items } = useBreadcrumb();
@@ -61,7 +80,11 @@ const App: React.FC = () => {
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <BreadcrumbProvider>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen font-sans bg-background-light dark:bg-background-dark">
+        <ShellTexture />
+        <div
+          id="app-shell"
+          className="flex flex-col min-h-screen font-sans bg-background-light dark:bg-background-dark relative isolate"
+        >
           <Navbar />
           <MainContent />
           <Footer />

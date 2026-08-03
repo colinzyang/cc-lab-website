@@ -533,16 +533,6 @@ export const Home: React.FC = () => {
       <section className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center overflow-hidden pt-[60px] pb-[80px]">
         <HelixCanvas />
 
-        {/* Grid background overlay */}
-        <div
-          className="fixed inset-0 z-[-1] pointer-events-none opacity-[0.035] dark:opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(0,74,153,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,74,153,0.3) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
-
         <div className="relative z-[2] w-[min(1180px,92vw)] mx-auto">
           {/* Command prompt */}
           <motion.div

@@ -30,3 +30,45 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/*
+ * Landing page — faint flat light-blue grid (浅蓝底纹).
+ * Painted on #app-shell (the OPAQUE page-background div in App.tsx) via the
+ * .home-texture class toggled from Home.tsx. It must live on #app-shell, not
+ * <body>, because #app-shell's opaque background-color would otherwise cover a
+ * body-level image. This layers the grid as a background-image on top of
+ * #app-shell's background-color, so it sits behind all content and fills the
+ * entire page (not a content container).
+ */
+#app-shell.home-texture {
+    background-image:
+        linear-gradient(rgba(137, 180, 250, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(137, 180, 250, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/*
+ * Inner pages (member / research / publication / news) — same grid, but only as
+ * a band at the very top that fades out. Uses a masked ::before pseudo so the
+ * mask never touches page content. #app-shell is position:relative + isolate
+ * (App.tsx), so this z-index:-1 layer paints above the shell's background-color
+ * and below all page content.
+ */
+#app-shell.top-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgba(137, 180, 250, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(137, 180, 250, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000 0,
+        #000 200px,
+        transparent 380px
+    );
+    mask-image: linear-gradient(to bottom, #000 0, #000 200px, transparent 380px);
+}
