@@ -470,6 +470,213 @@ const TickLine: React.FC = () => (
   />
 );
 
+// ---- Sequence ⇄ Structure edge: Bézier connecting the "language" → "physics" pills ----
+const SeqStructEdge: React.FC<{
+  containerRef: React.RefObject<HTMLDivElement>;
+  fromRef: React.RefObject<HTMLSpanElement>;
+  toRef: React.RefObject<HTMLSpanElement>;
+}> = ({ containerRef, fromRef, toRef }) => {
+  // Observe in-view from *inside* this component: it only mounts after the
+  // mission section renders (post-loading), so the container ref is already
+  // attached when this effect runs. A parent-level useInView would instead run
+  // during the loading skeleton (null ref) and, with once + stable deps, never
+  // re-subscribe — leaving the edge permanently invisible.
+  const active = useInView(containerRef, { once: true, margin: "-100px" });
+  interface EdgeGeom {
+    w: number;
+    h: number;
+    d: string;
+    sx: number;
+    sy: number;
+    ex: number;
+    ey: number;
+  }
+  const [geom, setGeom] = React.useState<EdgeGeom | null>(null);
+  const [drawn, setDrawn] = React.useState(false);
+
+  // Debounced commit: a reading is committed only once it has been stable for
+  // a short window. The DecodeSpan scramble moves the anchors every ~42ms, so
+  // it never reaches the threshold and can't be locked onto; any genuinely
+  // settled layout (initial, post-scramble, after a webfont swap or resize)
+  // does reach it and is committed. See measure() / burst().
+  const pendingKeyRef = React.useRef<string | null>(null);
+  const pendingValueRef = React.useRef<EdgeGeom | null>(null);
+  const lastChangeAtRef = React.useRef(0);
+  const committedKeyRef = React.useRef<string | null>(null);
+  const burstTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const reduceMotion = React.useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    [],
+  );
+
+  // Measure both period anchors relative to the mission-readout box, then
+  // build a right-bowing cubic Bézier between them (graph "nodes").
+  const measure = React.useCallback(() => {
+    const cont = containerRef.current;
+    const from = fromRef.current;
+    const to = toRef.current;
+    if (!cont || !from || !to) return;
+    const cr = cont.getBoundingClientRect();
+    const fr = from.getBoundingClientRect();
+    const tr = to.getBoundingClientRect();
+    if (cr.width === 0 || cr.height === 0) return;
+    const sx = fr.right - cr.left;
+    const sy = fr.top + fr.height / 2 - cr.top;
+    const ex = tr.right - cr.left;
+    const ey = tr.top + tr.height / 2 - cr.top;
+    // Keep the bow inside the card's right padding so it never spills out.
+    const spaceRight = Math.max(0, cr.right - Math.max(fr.right, tr.right));
+    const bow = Math.min(120, Math.max(24, spaceRight * 0.5));
+    const c1x = sx + bow;
+    const c2x = ex + bow;
+    const d =
+      `M ${sx.toFixed(1)} ${sy.toFixed(1)} ` +
+      `C ${c1x.toFixed(1)} ${sy.toFixed(1)}, ` +
+      `${c2x.toFixed(1)} ${ey.toFixed(1)}, ` +
+      `${ex.toFixed(1)} ${ey.toFixed(1)}`;
+    const geomValue: EdgeGeom = {
+      w: cr.width,
+      h: cr.height,
+      d,
+      sx,
+      sy,
+      ex,
+      ey,
+    };
+    // Key includes the container size so a pure reflow (e.g. webfont swap
+    // changing the box) is treated as a new reading, not silently dropped.
+    const key =
+      `${cr.width.toFixed(0)}|${cr.height.toFixed(0)}|` +
+      `${sx.toFixed(1)}|${sy.toFixed(1)}|${ex.toFixed(1)}|${ey.toFixed(1)}`;
+    const now =
+      typeof performance !== "undefined" ? performance.now() : Date.now();
+    if (key !== pendingKeyRef.current) {
+      pendingKeyRef.current = key;
+      pendingValueRef.current = geomValue;
+      lastChangeAtRef.current = now;
+    }
+    // Commit once the reading has held steady for a short window. The
+    // scramble shifts the anchors every ~42ms so it never holds; settled
+    // layouts do, and commit promptly. This is what keeps the edge glued to
+    // the periods through the scramble, the webfont swap, and resizes.
+    if (
+      committedKeyRef.current !== key &&
+      now - lastChangeAtRef.current >= 120 &&
+      pendingValueRef.current
+    ) {
+      committedKeyRef.current = key;
+      setGeom(pendingValueRef.current);
+    }
+  }, [containerRef, fromRef, toRef]);
+
+  // Run a short burst of measurements so the debounce has consecutive reads to
+  // confirm stability. Triggered on mount and whenever something can move the
+  // anchors: webfont load, container resize, viewport resize.
+  const burst = React.useCallback(() => {
+    if (burstTimerRef.current) window.clearTimeout(burstTimerRef.current);
+    let ticks = 0;
+    const run = () => {
+      measure();
+      ticks += 1;
+      if (ticks < 20) {
+        // ~1.2s of polling — enough to ride out the scramble settle and the
+        // webfont swap, and to satisfy the 120ms stability window.
+        burstTimerRef.current = window.setTimeout(run, 60);
+      } else {
+        burstTimerRef.current = null;
+      }
+    };
+    run();
+  }, [measure]);
+
+  // Measure up front, then re-burst whenever the layout can shift: on mount
+  // (covers the DecodeSpan scramble settling), when webfonts load (the FOUT
+  // swap is the classic cause of a late shift), on container resize, and on
+  // viewport resize. The debounce inside measure() guarantees only settled
+  // geometry is committed.
+  React.useLayoutEffect(() => {
+    burst();
+    let cancelled = false;
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        if (cancelled) return;
+        burst();
+      });
+    }
+    const el = containerRef.current;
+    let ro: ResizeObserver | undefined;
+    if (el && typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => burst());
+      ro.observe(el);
+    }
+    const onResize = () => burst();
+    window.addEventListener("resize", onResize);
+    return () => {
+      cancelled = true;
+      if (burstTimerRef.current) window.clearTimeout(burstTimerRef.current);
+      ro?.disconnect();
+      window.removeEventListener("resize", onResize);
+    };
+  }, [measure, containerRef]);
+
+  // Kick off the traveling pulse after the draw animation finishes.
+  React.useEffect(() => {
+    if (!active || reduceMotion) return;
+    const t = window.setTimeout(() => setDrawn(true), 1500);
+    return () => window.clearTimeout(t);
+  }, [active, reduceMotion]);
+
+  if (!geom) return null;
+
+  const reveal = active || reduceMotion;
+
+  return (
+    <svg
+      className="pointer-events-none absolute inset-0 h-full w-full overflow-visible text-primary dark:text-primary-dark"
+      viewBox={`0 0 ${geom.w} ${geom.h}`}
+      fill="none"
+      aria-hidden="true"
+    >
+      <motion.path
+        d={geom.d}
+        stroke="currentColor"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        strokeOpacity={0.55}
+        initial={{ pathLength: reduceMotion ? 1 : 0 }}
+        animate={{ pathLength: reveal ? 1 : 0 }}
+        transition={{ duration: 1.1, ease: "easeInOut", delay: 0.25 }}
+      />
+      <motion.circle
+        cx={geom.sx}
+        cy={geom.sy}
+        r={2.6}
+        fill="currentColor"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: active ? 0.9 : 0 }}
+        transition={{ duration: 0.4, delay: active ? 0.3 : 0 }}
+      />
+      <motion.circle
+        cx={geom.ex}
+        cy={geom.ey}
+        r={2.6}
+        fill="currentColor"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: active ? 0.9 : 0 }}
+        transition={{ duration: 0.4, delay: active ? 0.35 : 0 }}
+      />
+      {drawn && (
+        <circle r={2.3} fill="currentColor">
+          <animateMotion dur="2.6s" repeatCount="indefinite" path={geom.d} />
+        </circle>
+      )}
+    </svg>
+  );
+};
+
 // ============== MAIN HOME COMPONENT ==============
 export const Home: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
@@ -477,6 +684,11 @@ export const Home: React.FC = () => {
 
   const [data, setData] = React.useState<HomeData | null>(null);
   const [loading, setLoading] = React.useState(true);
+
+  // Sequence ⇄ Structure edge (mission box)
+  const missionReadoutRef = React.useRef<HTMLDivElement>(null);
+  const langDotRef = React.useRef<HTMLSpanElement>(null);
+  const physDotRef = React.useRef<HTMLSpanElement>(null);
 
   React.useEffect(() => {
     setBreadcrumbs([]);
@@ -627,7 +839,7 @@ export const Home: React.FC = () => {
             </motion.div>
 
             {/* Hook */}
-            <div className="mission-readout relative">
+            <div ref={missionReadoutRef} className="mission-readout relative">
               <div className="mb-[26px]">
                 <motion.p
                   className="font-sans font-black text-[clamp(1.9rem,5.4vw,3.4rem)] leading-[1.12] tracking-[-0.02em] text-slate-900 dark:text-text"
@@ -642,7 +854,7 @@ export const Home: React.FC = () => {
                     duration={0.7}
                     className="inline-block text-primary dark:text-primary-dark font-black bg-primary/5 dark:bg-primary-dark/10 border border-gray-200 dark:border-border rounded-[5px] px-[0.22em] whitespace-pre"
                   />
-                  .
+                  <span ref={langDotRef}>.</span>
                 </motion.p>
                 <motion.p
                   className="font-sans font-black text-[clamp(1.9rem,5.4vw,3.4rem)] leading-[1.12] tracking-[-0.02em] text-slate-900 dark:text-text"
@@ -658,7 +870,7 @@ export const Home: React.FC = () => {
                     delay={0.12}
                     className="inline-block text-primary dark:text-primary-dark font-black bg-primary/5 dark:bg-primary-dark/10 border border-gray-200 dark:border-border rounded-[5px] px-[0.22em] whitespace-pre"
                   />
-                  .
+                  <span ref={physDotRef}>.</span>
                 </motion.p>
               </div>
 
@@ -679,6 +891,13 @@ export const Home: React.FC = () => {
                 biological foundation models with molecular dynamics to decode
                 molecular mechanisms and engineer next-generation therapeutics.
               </motion.p>
+
+              {/* Sequence ⇄ Structure edge */}
+              <SeqStructEdge
+                containerRef={missionReadoutRef}
+                fromRef={langDotRef}
+                toRef={physDotRef}
+              />
             </div>
           </motion.div>
         </div>
