@@ -234,6 +234,14 @@
       "bio_long": "",
       "interest": "",
       "type": "member"
+    },
+    {
+      "type": "member",
+      "id": "xingyu_hu",
+      "name": "Xingyu Hu",
+      "role": "PhD Student",
+      "title": "PhD Student",
+      "image": "/assets/images/xingyu_hu.jpeg"
     }
   ],
   "alumni": [
@@ -260,14 +268,6 @@
       "title": "UG Researcher (FYP) 2025",
       "type": "alumn",
       "current_position": "Master, National University of Singapore"
-    },
-    {
-      "id": "xingyu_hu",
-      "name": "Xingyu Hu",
-      "role": "Undergraduate Researcher",
-      "title": "UG Researcher (FYP) 2024",
-      "type": "alumn",
-      "current_position": "Master, Carnegie Mellon University"
     }
   ]
 }
