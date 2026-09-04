@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sveltia CMS Trial (Remote Branch) - CC Lab</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <!--
+      Sveltia CMS isolated trial page (any modern browser, incl. Safari).
+      Route: sign in with a GitHub Personal Access Token ("Sign In with Token").
+      All commits land on the remote 'try-sveltia' branch ONLY — main is never
+      touched. Rollback: delete the try-sveltia branch on GitHub.
+      Requires the trial branch to exist on the remote (git push -u origin try-sveltia).
+      The production Decap admin at /admin/ is untouched.
+    -->
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+    <!-- BibTeX parsing library required by the custom import widget -->
+    <script src="https://cdn.jsdelivr.net/npm/bibtex-parse-js@0.0.24/bibtexParse.js"></script>
+    <!-- Reuse the exact production widget from /admin (no copy, no changes) -->
+    <script src="/admin/bibtex-widget.js"></script>
+  </body>
+</html>

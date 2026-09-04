@@ -1,0 +1,218 @@
+# Sveltia CMS trial config — LOCAL repository route (Chromium only)
+# Copied verbatim from public/admin/config.yml; only the backend block and
+# publish_mode differ. Uses the "Work with Local Repository" workflow:
+# repo name below is arbitrary (never validated, used only to partition
+# the browser's IndexedDB cache). No authentication required.
+backend:
+  name: github
+  repo: cc-lab/trial-local # dummy — local workflow performs no git operations
+
+# 发布模式
+# (试用期间注释:走 Simple workflow,保存直写文件,回退最干净;正式迁移时再启用)
+# publish_mode: editorial_workflow
+
+# 媒体文件配置
+media_folder: "public/assets/images" # 媒体文件存储位置
+public_folder: "/assets/images" # 媒体文件的公共访问路径
+
+# 集合配置
+collections:
+    # 团队成员集合
+  - name: "members"
+    label: "Member"
+    identifier_field: "id"
+    editor:
+      preview: false
+    files:
+      - label: "Members Data"
+        name: "members"
+        file: "public/data/members.json"
+        fields:
+          - label: "Principal Investigator"
+            name: "pi"
+            widget: "object"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Title", name: "title", widget: "string", required: false}
+              - {label: "Image", name: "image", widget: "image", required: false, hint: "Optional — an initial-based avatar is generated automatically if left empty"}
+              - {label: "Biography (Long)", name: "bio_long", widget: "text", required: false}
+              - {label: "Research Interest", name: "interest", widget: "string", required: false}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "GitHub Username", name: "github", widget: "string", required: false}
+              - {label: "Google Scholar ID", name: "google_scholar", widget: "string", required: false}
+              - {label: "ORCID", name: "orcid", widget: "string", required: false}
+              - {label: "Type", name: "type", widget: "select", options: ["member", "alumn"], default: "member"}
+
+          - label: "Current Members"
+            name: "members"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Title", name: "title", widget: "string", required: false}
+              - {label: "Image", name: "image", widget: "image", required: false, hint: "Optional — an initial-based avatar is generated automatically if left empty"}
+              - {label: "Biography (Long)", name: "bio_long", widget: "text", required: false}
+              - {label: "Research Interest", name: "interest", widget: "string", required: false}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "GitHub Username", name: "github", widget: "string", required: false}
+              - {label: "Google Scholar ID", name: "google_scholar", widget: "string", required: false}
+              - {label: "ORCID", name: "orcid", widget: "string", required: false}
+              - {label: "Type", name: "type", widget: "select", options: ["member", "alumn"], default: "member"}
+
+          - label: "Alumni"
+            name: "alumni"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Current Position", name: "current_position", widget: "string", required: false}
+              - {label: "Type", name: "type", widget: "hidden", default: "alumn"}
+
+  # 出版物集合
+  - name: "publications"
+    label: "Publications"
+    editor:
+      preview: false
+    files:
+      - label: "Publications Data"
+        name: "publications"
+        file: "public/data/publications.json"
+        fields:
+          # Publications managed by custom BibTeX widget (includes import and management)
+          - label: "Publications Manager"
+            name: "publications"
+            widget: "bibtex-import"
+            hint: "Manage all publications here. Use the BibTeX Import Tool to add new entries, or edit/delete existing ones below."
+
+  # 新闻集合
+  - name: "news"
+    label: "News"
+    identifier_field: "date"
+    editor:
+      preview: false
+    files:
+      - label: "News Items"
+        name: "news"
+        file: "public/data/news.json"
+        fields:
+          - label: "News Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Date", name: "date", widget: "string", hint: "e.g., January 2024"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                required: false
+                field: {label: "Image", name: "src", widget: "image"}
+
+  # 实验室信息集合
+  - name: "labInfo"
+    label: "Contact"
+    identifier_field: "id"
+    editor:
+      preview: false
+    files:
+      - label: "Contact & Lab Info"
+        name: "labInfo"
+        file: "public/data/labInfo.json"
+        fields:
+          - label: "Contact Information"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Email", name: "email", widget: "string"}
+              - {label: "Office Location", name: "office", widget: "string"}
+              - {label: "Map Embed URL", name: "mapUrl", widget: "string", required: false}
+
+          - label: "Lab Details"
+            name: "lab"
+            widget: "object"
+            fields:
+              - {label: "Lab Name", name: "name", widget: "string"}
+              - {label: "Full Name", name: "fullName", widget: "string"}
+              - {label: "Tagline", name: "tagline", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Affiliation", name: "affiliation", widget: "string"}
+              - {label: "Department", name: "department", widget: "string"}
+              - label: "Research Centers"
+                name: "centers"
+                widget: "list"
+                fields:
+                  - {label: "Center Name", name: "name", widget: "string"}
+                  - {label: "Center URL", name: "url", widget: "string"}
+
+  # 研究方向集合
+  - name: "research"
+    label: "Research"
+    editor:
+      preview: false
+    files:
+      - label: "Research Content"
+        name: "research"
+        file: "public/data/research.json"
+        fields:
+          - {label: "Introduction", name: "intro", widget: "text"}
+          - label: "Research Directions"
+            name: "directions"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Research Question", name: "question", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Key Areas"
+                name: "keyAreas"
+                widget: "list"
+                field: {label: "Area", name: "area", widget: "string"}
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["Brain", "Dna", "Pill", "Lightbulb", "Github", "Database", "Terminal"]
+          - label: "Current Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["Brain", "Dna", "Pill", "Lightbulb", "Github", "Database", "Terminal"]
+
+  # 资源集合
+  - name: "resources"
+    label: "Resources & Software"
+    editor:
+      preview: false
+    files:
+      - label: "Resources Content"
+        name: "resources"
+        file: "public/data/resources.json"
+        fields:
+          - {label: "Introduction", name: "intro", widget: "string"}
+          - label: "Tools & Software"
+            name: "tools"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["Brain", "Dna", "Pill", "Lightbulb", "Github", "Database", "Terminal"]
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                field: {label: "Tag", name: "tag", widget: "string"}
+              - {label: "Link URL", name: "link", widget: "string"}

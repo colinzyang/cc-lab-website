@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sveltia CMS Trial (Local Repository) - CC Lab</title>
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <!--
+      Sveltia CMS isolated trial page (Chromium only).
+      Route: "Work with Local Repository" — edits write directly to local files
+      via the File System Access API; no authentication, no git operations.
+      Rollback: git restore public/data/ (or discard the try-sveltia branch).
+      The production Decap admin at /admin/ is untouched.
+    -->
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+    <!-- BibTeX parsing library required by the custom import widget -->
+    <script src="https://cdn.jsdelivr.net/npm/bibtex-parse-js@0.0.24/bibtexParse.js"></script>
+    <!-- Reuse the exact production widget from /admin (no copy, no changes) -->
+    <script src="/admin/bibtex-widget.js"></script>
+  </body>
+</html>
