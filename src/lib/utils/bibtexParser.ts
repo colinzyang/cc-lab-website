@@ -160,8 +160,7 @@ export function detectPreprint(
  */
 function parseBibtexEntry(entry: bibtexParse.BibTeXEntry, id: number): ParsedPublication | null {
   try {
-    const fields = entry.fields || {};
-    const entryType = entry.type?.toLowerCase() || 'article';
+    const fields = entry.entryTags || {};
 
     // Extract required fields
     const title = removeLatexBraces(fields.title || fields.TITLE || '');
@@ -207,7 +206,7 @@ function parseBibtexEntry(entry: bibtexParse.BibTeXEntry, id: number): ParsedPub
       authors,
       link,
       image: '/assets/images/papers/default.jpg', // Default image
-      bibtexKey: entry.key?.toLowerCase(),
+      bibtexKey: entry.citationKey?.toLowerCase(),
     };
 
     if (doi) {
@@ -237,11 +236,11 @@ export function parseBibtexString(bibtexString: string, startId: number = 1): Pa
   const errors: string[] = [];
 
   try {
-    const parsed = bibtexParse.bibtexParse.toJSON(bibtexString);
+    const parsed = bibtexParse.toJSON(bibtexString);
 
     if (!Array.isArray(parsed)) {
       // Handle case where a single entry is returned as object
-      const singleEntry = parsed as unknown as bibtexParse.BibTeXEntry;
+      const singleEntry = parsed;
       if (singleEntry) {
         const pub = parseBibtexEntry(singleEntry, startId);
         if (pub) {
@@ -256,7 +255,7 @@ export function parseBibtexString(bibtexString: string, startId: number = 1): Pa
         if (pub) {
           entries.push(pub);
         } else {
-          const key = entry.key || `entry ${index + 1}`;
+          const key = entry.citationKey || `entry ${index + 1}`;
           errors.push(`Failed to parse "${key}": missing required fields (title/year)`);
         }
       });
