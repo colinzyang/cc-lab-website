@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useBreadcrumb } from "../src/context/BreadcrumbContext";
 import { useDocumentTitle } from "../src/hooks/useDocumentTitle";
+import { Avatar } from "./Avatar";
 import {
   loadLabInfo,
   loadMembers,
@@ -1186,13 +1187,10 @@ export const Home: React.FC = () => {
                     times: [0, 0.5, 1],
                   }}
                 />
-                <img
-                  src={pi.image}
-                  alt={pi.name}
+                <Avatar
+                  name={pi.name}
+                  image={pi.image}
                   className="w-full h-full object-cover block"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
                 />
               </motion.div>
             )}

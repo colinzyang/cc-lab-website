@@ -34,7 +34,7 @@ collections:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Role", name: "role", widget: "string"}
               - {label: "Title", name: "title", widget: "string", required: false}
-              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Image", name: "image", widget: "image", required: false, hint: "Optional — an initial-based avatar is generated automatically if left empty"}
               - {label: "Biography (Long)", name: "bio_long", widget: "text", required: false}
               - {label: "Research Interest", name: "interest", widget: "string", required: false}
               - {label: "Email", name: "email", widget: "string", required: false}
@@ -51,7 +51,7 @@ collections:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Role", name: "role", widget: "string"}
               - {label: "Title", name: "title", widget: "string", required: false}
-              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Image", name: "image", widget: "image", required: false, hint: "Optional — an initial-based avatar is generated automatically if left empty"}
               - {label: "Biography (Long)", name: "bio_long", widget: "text", required: false}
               - {label: "Research Interest", name: "interest", widget: "string", required: false}
               - {label: "Email", name: "email", widget: "string", required: false}
@@ -69,7 +69,6 @@ collections:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Role", name: "role", widget: "string"}
               - {label: "Current Position", name: "current_position", widget: "string", required: false}
-              - {label: "Image", name: "image", widget: "image"}
               - {label: "Type", name: "type", widget: "hidden", default: "alumn"}
 
   # 出版物集合

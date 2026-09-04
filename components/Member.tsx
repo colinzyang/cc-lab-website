@@ -4,6 +4,7 @@ import { Mail, Github, GraduationCap, Shuffle, RotateCcw } from 'lucide-react';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadMembers, Member as MemberType } from '../src/lib/dataLoader';
 import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
+import { Avatar } from './Avatar';
 
 // April Fools' Day check
 const isAprilFools = (): boolean => {
@@ -183,11 +184,7 @@ export const Member: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
         >
           <div className="md:col-span-4 aspect-square overflow-hidden rounded-full bg-gray-100 dark:bg-surface">
-            <img
-              src={getPersonAt(0).image}
-              alt={getPersonAt(0).name}
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-            />
+            <Avatar name={getPersonAt(0).name} image={getPersonAt(0).image} />
           </div>
           <div className="md:col-span-8 flex flex-col justify-center h-full pt-4">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-text mb-6">{getPersonAt(0).name}</h2>
@@ -250,11 +247,7 @@ export const Member: React.FC = () => {
                         transition={{ delay: groupIdx * 0.05 + idx * 0.05 + 0.2 }}
                       >
                         <div className="aspect-square overflow-hidden rounded-full bg-gray-100 dark:bg-surface mb-5">
-                          <img
-                            src={person.image}
-                            alt={person.name}
-                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                          />
+                          <Avatar name={person.name} image={person.image} />
                         </div>
                         <h3 className="text-lg font-bold text-slate-900 dark:text-text leading-tight">{person.name}</h3>
                         <p className="text-primary dark:text-primary-dark font-medium text-sm my-1">{person.title || person.role}</p>
