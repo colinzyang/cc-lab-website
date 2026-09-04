@@ -242,6 +242,14 @@
       "role": "PhD Student",
       "title": "PhD Student",
       "image": "/assets/images/xingyu_hu.jpeg"
+    },
+    {
+      "type": "member",
+      "id": "jiachen_zhao",
+      "name": "Jiachen Zhao",
+      "role": "MSc Student",
+      "title": "MSc Student",
+      "image": "/assets/images/jiachen_zhao.jpeg.png"
     }
   ],
   "alumni": [
