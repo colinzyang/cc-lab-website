@@ -11,9 +11,9 @@
 
 **Structural Bioinformatics & Molecular Dynamics Laboratory**
 
-*Xian Jiaotong-Liverpool University (XJTLU)*
+*Xi'an Jiaotong-Liverpool University (XJTLU)*
 
-[Live Site](https://cclabweb.netlify.app) · [Report Bug](https://github.com/colinzyang/cc-lab-website/issues) · [Request Feature](https://github.com/colinzyang/cc-lab-website/issues)
+[Live Site](https://cc-lab-xjtlu.netlify.app) · [Report Bug](https://github.com/colinzyang/cc-lab-website/issues) · [Request Feature](https://github.com/colinzyang/cc-lab-website/issues)
 
 </div>
 
@@ -27,12 +27,10 @@
 - [Project Structure](#project-structure)
 - [Routing](#routing)
 - [Content Management](#content-management)
-- [Deployment](#deployment)
 - [Image Management](#image-management)
-- [Browser Support](#browser-support)
+- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [License](#license)
-- [Code of Conduct](#code-of-conduct)
 - [Contact](#contact)
 
 ---
@@ -117,26 +115,24 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ```
 .
-├── components/              # Page components (Member, Publication, News, etc.)
+├── components/              # Page & UI components (Home, Member, Research, Publication, News, Contact, …)
 ├── src/
-│   ├── context/             # React Context (breadcrumb state)
-│   └── lib/
-│       ├── dataLoader.ts    # Data fetching & type definitions
-│       └── utils/
-│           └── bibtexParser.ts  # BibTeX parsing utilities
+│   ├── context/             # Breadcrumb context provider
+│   ├── hooks/               # Shared hooks (e.g., useDocumentTitle)
+│   ├── lib/
+│   │   ├── dataLoader.ts    # Typed JSON loaders, caching & interfaces
+│   │   └── utils/
+│   │       └── bibtexParser.ts  # BibTeX parsing utilities
+│   └── index.css            # Tailwind v4 entry + @theme tokens
 ├── public/
-│   ├── data/                # JSON data files (CMS-managed)
-│   │   ├── members.json
-│   │   ├── publications.json
-│   │   ├── news.json
-│   │   └── labInfo.json
-│   ├── admin/               # Decap CMS interface
-│   └── assets/images/       # Team photos, paper thumbnails, etc.
-├── App.tsx                  # Main app with routing
-├── index.html               # HTML template
+│   ├── data/                # JSON content (members, publications, news, research, resources, labInfo)
+│   ├── admin/               # Decap CMS (config + BibTeX import widget)
+│   └── assets/images/       # people/, papers/, posts/
+├── App.tsx                  # HashRouter, layout & routes
+├── index.html               # HTML shell (fonts, Material Symbols, Netlify Identity)
 ├── vite.config.ts           # Vite configuration
-├── tsconfig.json            # TypeScript configuration
-├── CLAUDE.md                # Detailed developer guidelines
+├── tsconfig.json            # TypeScript configuration (strict)
+├── AGENTS.md / CLAUDE.md    # Developer & coding-agent guidelines
 ├── CONTRIBUTING.md          # Contribution guidelines
 └── CODE_OF_CONDUCT.md       # Code of Conduct
 ```
@@ -151,10 +147,12 @@ The site uses **hash-based routing** for static hosting compatibility.
 |-------|------|
 | `/` | Home (Hero + Recent Posts) |
 | `/#/member` | Team Members |
+| `/#/research` | Research Directions |
 | `/#/publication` | Research Publications |
 | `/#/news` | News & Events |
-| `/#/resources` | Resources |
 | `/#/contact` | Contact Information |
+
+Unknown paths fall back to the home page.
 
 ---
 
@@ -174,6 +172,8 @@ Access the CMS to manage content without touching code:
 | **Members** | Lab members (PI, current members, alumni) |
 | **Publications** | Research papers organized by year |
 | **News** | News and event announcements |
+| **Research** | Research directions and key areas |
+| **Resources & Software** | Tools and software listings |
 | **Lab Info** | Lab description and contact information |
 
 ### BibTeX Import
@@ -235,56 +235,34 @@ Or manually:
 
 ---
 
-## Browser Support
-
-| Browser | Support |
-|---------|---------|
-| Chrome  | Latest  |
-| Firefox | Latest  |
-| Safari  | Latest  |
-| Edge    | Latest  |
-
-Built with CSS Grid, Flexbox, and mobile-first responsive design (breakpoints: 768px, 1024px).
-
----
-
 ## Development Notes
 
-- **TypeScript Strict Mode** — Full type checking enabled; build fails on errors
-- **Tailwind CSS v4** — Theme customization via `@theme` directive in `src/index.css`
-- **Dark Mode** — Class-based toggling with `dark:` prefix
-- **Data Caching** — DataLoader caches fetched data; hard-refresh to see JSON changes
+- **TypeScript strict mode** — `strict`, `noUnusedLocals` and `noUnusedParameters` are enabled; run `npx tsc --noEmit` to type-check
+- **Tailwind CSS v4** — theme tokens are defined in the `@theme` block of `src/index.css` (no separate config file)
+- **Dark mode** — class-based; use the `dark:` prefix
+- **Responsive** — mobile-first design built with CSS Grid/Flexbox; primary breakpoint `md:` (768px)
+- **Data caching** — loaders cache JSON in memory; hard-refresh the browser (Cmd+Shift+R) to pick up manual JSON edits
 
-For detailed guidelines, see [CLAUDE.md](./CLAUDE.md).
+For detailed coding conventions, see [AGENTS.md](./AGENTS.md) and [CLAUDE.md](./CLAUDE.md).
 
 ---
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](./CONTRIBUTING.md) for details on:
-
-- Development workflow
-- Coding standards
-- Commit message conventions
-- Pull request process
-
-### Quick Links
+We welcome contributions! Please see our [Contributing Guidelines](./CONTRIBUTING.md) for details on the development workflow, coding standards, commit conventions, and pull request process.
 
 - [Report a Bug](https://github.com/colinzyang/cc-lab-website/issues)
 - [Request a Feature](https://github.com/colinzyang/cc-lab-website/issues)
-- [Contribution Guidelines](./CONTRIBUTING.md)
+
+### Code of Conduct
+
+This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report any unacceptable behavior to [Chun.Chan@xjtlu.edu.cn](mailto:Chun.Chan@xjtlu.edu.cn).
 
 ---
 
 ## License
 
 This project is open-sourced under the [MIT License](./LICENSE).
-
----
-
-## Code of Conduct
-
-This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report any unacceptable behavior to [Chun.Chan@xjtlu.edu.cn](mailto:Chun.Chan@xjtlu.edu.cn).
 
 ---
 
@@ -295,4 +273,4 @@ This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUC
 - **Principal Investigator:** Kevin Chan
 - **Email:** [Chun.Chan@xjtlu.edu.cn](mailto:Chun.Chan@xjtlu.edu.cn)
 - **School:** School of Science, Center for Intelligent RNA Therapeutics
-- **Website:** [https://cclabweb.netlify.app](https://cclabweb.netlify.app/)
+- **Website:** [https://cc-lab-xjtlu.netlify.app](https://cc-lab-xjtlu.netlify.app)
