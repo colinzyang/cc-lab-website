@@ -107,6 +107,18 @@
         class="bg-background-light text-slate-900 dark:bg-background-dark dark:text-white selection:bg-primary selection:text-white"
     >
         <div id="root"></div>
+        <!-- Static register form for Netlify Forms detection (SPA renders client-side).
+             The React form in components/Contact.tsx submits to "/" with the same form-name. -->
+        <form
+            name="contact"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            hidden
+        >
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <textarea name="message"></textarea>
+        </form>
         <script type="module" src="/index.tsx"></script>
     </body>
 </html>
