@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadNews, NewsItem } from '../src/lib/dataLoader';
 import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
-import { ChevronDown, ImageOff } from 'lucide-react';
+import { ArrowDownWideNarrow, ArrowUpNarrowWide, ChevronDown, ImageOff } from 'lucide-react';
 import { ScrollToTopButton } from './ScrollToTopButton';
 
 // Image component with error handling
@@ -30,12 +30,36 @@ const NewsImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
   );
 };
 
+// --- Sorting helpers ---
+
+type SortOrder = 'newest' | 'oldest';
+
+const MONTH_INDEX: Partial<Record<string, number>> = {
+  jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+  jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11,
+};
+
+// Parses human-readable dates like "May 2026" or "May 15, 2026".
+// Returns null for unrecognised dates (they sort to the end).
+const parseNewsDate = (dateStr: string): number | null => {
+  const match = dateStr.match(/([A-Za-z]{3,})\D*(\d{1,2})?\D*(\d{4})/);
+  if (!match) return null;
+  const month = MONTH_INDEX[match[1].slice(0, 3).toLowerCase()];
+  if (month === undefined) return null;
+  const day = match[2] ? parseInt(match[2], 10) : 1;
+  return new Date(parseInt(match[3], 10), month, day).getTime();
+};
+
+// Stable identity for a news item (survives re-ordering, unlike array index)
+const newsItemKey = (item: NewsItem): string => `${item.date}|${item.title}`;
+
 export const News: React.FC = () => {
   const { setBreadcrumbs } = useBreadcrumb();
   useDocumentTitle('News & Events');
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [expandedKey, setExpandedKey] = useState<string | null>(null);
+  const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
 
   useEffect(() => {
     setBreadcrumbs([{ label: 'News & Events' }]);
@@ -51,9 +75,25 @@ export const News: React.FC = () => {
     });
   }, []);
 
-  const handleToggle = (idx: number) => {
-    setExpandedIndex(expandedIndex === idx ? null : idx);
+  const handleToggle = (key: string) => {
+    setExpandedKey(expandedKey === key ? null : key);
   };
+
+  const sortedItems = useMemo(() => {
+    const indexed = newsItems.map((item, idx) => ({ item, idx }));
+    indexed.sort((a, b) => {
+      const da = parseNewsDate(a.item.date);
+      const db = parseNewsDate(b.item.date);
+      // Unparseable dates always go last
+      if (da === null && db === null) return a.idx - b.idx;
+      if (da === null) return 1;
+      if (db === null) return -1;
+      if (da !== db) return sortOrder === 'newest' ? db - da : da - db;
+      // Same date: keep original JSON order (stable)
+      return a.idx - b.idx;
+    });
+    return indexed.map(({ item }) => item);
+  }, [newsItems, sortOrder]);
 
   if (loading) {
     return (
@@ -72,13 +112,49 @@ export const News: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="mb-12"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-text mb-6">News & Events</h1>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-text mb-6">News &amp; Events</h1>
+          <div
+            role="group"
+            aria-label="Sort news"
+            className="flex items-center gap-1 rounded-lg border border-gray-200 dark:border-border p-1 self-start sm:mb-6"
+          >
+            <button
+              type="button"
+              aria-pressed={sortOrder === 'newest'}
+              onClick={() => setSortOrder('newest')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md transition-colors cursor-pointer ${
+                sortOrder === 'newest'
+                  ? 'bg-primary text-white'
+                  : 'text-slate-600 dark:text-subtext hover:bg-gray-100 dark:hover:bg-surface'
+              }`}
+            >
+              <ArrowDownWideNarrow className="w-4 h-4" />
+              Newest
+            </button>
+            <button
+              type="button"
+              aria-pressed={sortOrder === 'oldest'}
+              onClick={() => setSortOrder('oldest')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md transition-colors cursor-pointer ${
+                sortOrder === 'oldest'
+                  ? 'bg-primary text-white'
+                  : 'text-slate-600 dark:text-subtext hover:bg-gray-100 dark:hover:bg-surface'
+              }`}
+            >
+              <ArrowUpNarrowWide className="w-4 h-4" />
+              Oldest
+            </button>
+          </div>
+        </div>
       </motion.div>
 
       <div className="relative border-l border-gray-200 dark:border-border ml-4 space-y-[30px] pb-12">
-        {newsItems.map((item, idx) => (
+        {sortedItems.map((item, idx) => {
+          const key = newsItemKey(item);
+          return (
           <motion.div
-            key={idx}
+            key={key}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -89,7 +165,7 @@ export const News: React.FC = () => {
             <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-primary dark:bg-primary-dark rounded-full ring-4 ring-white dark:ring-background-dark" />
 
             <div
-              onClick={() => item.images && item.images.length > 0 && handleToggle(idx)}
+              onClick={() => item.images && item.images.length > 0 && handleToggle(key)}
               className={`cursor-pointer select-none ${
                 item.images && item.images.length > 0
                   ? 'hover:bg-gray-50/50 dark:hover:bg-surface/50 rounded-lg -ml-2 pl-2 pr-2 py-2 transition-colors'
@@ -107,7 +183,7 @@ export const News: React.FC = () => {
                 </div>
                 {item.images && item.images.length > 0 && (
                   <motion.div
-                    animate={{ rotate: expandedIndex === idx ? 180 : 0 }}
+                    animate={{ rotate: expandedKey === key ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                     className="flex-shrink-0 mt-1"
                   >
@@ -124,7 +200,7 @@ export const News: React.FC = () => {
 
             {/* Expandable image drawer */}
             <AnimatePresence initial={false}>
-              {expandedIndex === idx && item.images && item.images.length > 0 && (
+              {expandedKey === key && item.images && item.images.length > 0 && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
@@ -151,7 +227,8 @@ export const News: React.FC = () => {
               )}
             </AnimatePresence>
           </motion.div>
-        ))}
+          );
+        })}
       </div>
       <ScrollToTopButton />
     </div>
