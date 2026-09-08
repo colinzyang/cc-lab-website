@@ -746,7 +746,7 @@ export const Home: React.FC = () => {
       <section className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center overflow-hidden pt-[60px] pb-[80px]">
         <HelixCanvas />
 
-        <div className="relative z-[2] w-[min(1180px,92vw)] mx-auto">
+        <div className="relative z-[2] w-full max-w-[1180px] mx-auto">
           {/* Command prompt */}
           <motion.div
             className="font-mono text-sm text-slate-500 dark:text-subtext mb-[34px]"
@@ -818,7 +818,7 @@ export const Home: React.FC = () => {
 
       {/* ========== MISSION ========== */}
       <section className="py-[110px]">
-        <div className="w-[min(1180px,92vw)] mx-auto">
+        <div className="w-full max-w-[1180px] mx-auto">
           <motion.div
             className="relative border border-gray-200 dark:border-border bg-gradient-to-b from-gray-50/35 to-gray-50/10 dark:from-[rgba(49,50,68,0.35)] dark:to-[rgba(49,50,68,0.12)] p-[clamp(20px,4vw,56px)]"
             initial={{ opacity: 0, y: 30 }}
@@ -906,7 +906,7 @@ export const Home: React.FC = () => {
 
       {/* ========== RESEARCH ========== */}
       <section className="py-[90px]">
-        <div className="w-[min(1180px,92vw)] mx-auto">
+        <div className="w-full max-w-[1180px] mx-auto">
           <motion.div
             className="font-mono text-[13px] text-slate-500 dark:text-subtext tracking-[0.04em] mb-[14px]"
             initial={{ opacity: 0, y: 20 }}
@@ -997,7 +997,7 @@ export const Home: React.FC = () => {
 
       {/* ========== STATS ========== */}
       <section className="py-[90px] border-t border-b border-gray-200 dark:border-border">
-        <div className="w-[min(1180px,92vw)] mx-auto">
+        <div className="w-full max-w-[1180px] mx-auto">
           <motion.div
             className="flex items-center gap-[10px] font-mono text-[13px] text-slate-500 dark:text-subtext mb-[36px]"
             initial={{ opacity: 0, x: -12 }}
@@ -1078,7 +1078,7 @@ export const Home: React.FC = () => {
 
       {/* ========== PUBLICATIONS ========== */}
       <section className="py-[100px]">
-        <div className="w-[min(1180px,92vw)] mx-auto">
+        <div className="w-full max-w-[1180px] mx-auto">
           <motion.div
             className="font-mono text-[13px] text-slate-500 dark:text-subtext tracking-[0.04em] mb-[14px]"
             initial={{ opacity: 0, y: 20 }}
@@ -1143,7 +1143,7 @@ export const Home: React.FC = () => {
 
       {/* ========== PI ========== */}
       <section className="py-[100px]">
-        <div className="w-[min(1180px,92vw)] mx-auto">
+        <div className="w-full max-w-[1180px] mx-auto">
           <motion.div
             className="font-mono text-[13px] text-slate-500 dark:text-subtext tracking-[0.04em] mb-[14px]"
             initial={{ opacity: 0, y: 20 }}
@@ -1164,11 +1164,11 @@ export const Home: React.FC = () => {
             Principal Investigator
           </motion.h2>
 
-          <div className="grid grid-cols-[300px_1fr] gap-12 items-start mt-[38px] max-md:grid-cols-1 max-md:gap-7">
+          <div className="grid lg:grid-cols-[340px_1fr] lg:items-center gap-7 lg:gap-12 mt-[38px]">
             {/* PI Photo */}
             {pi && (
               <motion.div
-                className="relative aspect-square bg-gray-100 dark:bg-surface overflow-hidden border border-gray-200 dark:border-border max-md:max-w-[260px]"
+                className="relative aspect-square bg-gray-100 dark:bg-surface overflow-hidden border border-gray-200 dark:border-border max-lg:max-w-[260px]"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
@@ -1226,59 +1226,60 @@ export const Home: React.FC = () => {
                   "Kevin received his PhD from City University of Hong Kong and completed postdoctoral training at The Ohio State University."}
               </motion.p>
 
-              {/* Now badge */}
-              <motion.div
-                className="relative overflow-hidden max-w-[60ch] p-[14px_18px] border border-gray-200 dark:border-border border-l-2 border-l-primary dark:border-l-primary-dark rounded-r-[6px] bg-gradient-to-r from-primary/[0.04] dark:from-primary-dark/[0.09] to-primary/[0.01] dark:to-primary-dark/[0.02]"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-              >
-                {/* Highlight sweep */}
-                <motion.span
-                  className="absolute top-0 bottom-0 w-[42%] pointer-events-none"
-                  initial={{ left: "-45%", opacity: 0 }}
-                  whileInView={{ left: "105%", opacity: [0, 1, 0] }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{
-                    duration: 1.1,
-                    delay: 0.25,
-                    ease: "easeInOut",
-                    times: [0, 0.5, 1],
-                  }}
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, rgba(137,180,250,0.16), transparent)",
-                  }}
-                />
-
-                <div className="inline-flex items-center gap-[7px] font-mono text-[11px] tracking-[0.18em] uppercase text-primary dark:text-primary-dark mb-[9px]">
-                  <PulseDot /> now
-                </div>
-                <p className="text-slate-900 dark:text-text text-[1.02rem]">
-                  In{" "}
-                  <span className="text-primary dark:text-primary-dark font-medium">
-                    2024
-                  </span>
-                  , he joined Department of Biosciences and Bioinformatics,{" "}
-                  <span className="text-primary dark:text-primary-dark font-medium">
-                    XJTLU
-                  </span>
-                  . He is now also the{" "}
-                  <span className="text-primary dark:text-primary-dark font-medium">
-                    deputy director
-                  </span>{" "}
-                  of the Center for Intelligent RNA Therapeutics at XJTLU.
-                </p>
-              </motion.div>
             </div>
           </div>
+
+          {/* Now badge — full-width status strip below the profile grid */}
+          <motion.div
+            className="relative overflow-hidden p-[14px_18px] border border-gray-200 dark:border-border border-l-2 border-l-primary dark:border-l-primary-dark rounded-r-[6px] bg-gradient-to-r from-primary/[0.04] dark:from-primary-dark/[0.09] to-primary/[0.01] dark:to-primary-dark/[0.02] mt-[26px]"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          >
+            {/* Highlight sweep */}
+            <motion.span
+              className="absolute top-0 bottom-0 w-[42%] pointer-events-none"
+              initial={{ left: "-45%", opacity: 0 }}
+              whileInView={{ left: "105%", opacity: [0, 1, 0] }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 1.1,
+                delay: 0.25,
+                ease: "easeInOut",
+                times: [0, 0.5, 1],
+              }}
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, rgba(137,180,250,0.16), transparent)",
+              }}
+            />
+
+            <div className="inline-flex items-center gap-[7px] font-mono text-[11px] tracking-[0.18em] uppercase text-primary dark:text-primary-dark mb-[9px]">
+              <PulseDot /> now
+            </div>
+            <p className="text-slate-900 dark:text-text text-[1.02rem]">
+              In{" "}
+              <span className="text-primary dark:text-primary-dark font-medium">
+                2024
+              </span>
+              , he joined Department of Biosciences and Bioinformatics,{" "}
+              <span className="text-primary dark:text-primary-dark font-medium">
+                XJTLU
+              </span>
+              . He is now also the{" "}
+              <span className="text-primary dark:text-primary-dark font-medium">
+                deputy director
+              </span>{" "}
+              of the Center for Intelligent RNA Therapeutics at XJTLU.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* ========== CONTACT ========== */}
       <section className="py-[110px] border-t border-gray-200 dark:border-border">
-        <div className="w-[min(1180px,92vw)] mx-auto">
+        <div className="w-full max-w-[1180px] mx-auto">
           <motion.div
             className="font-mono text-[13px] text-slate-500 dark:text-subtext tracking-[0.04em] mb-[14px]"
             initial={{ opacity: 0, y: 24 }}

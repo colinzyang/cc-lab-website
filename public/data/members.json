@@ -1,17 +1,17 @@
 {
   "pi": {
-    "id": "kevin_chan",
+    "google_scholar": "rSZrshkAAAAJ&hl=en",
+    "github": "skblnw",
+    "interest": "Structural Bioinformatics, Molecular Dynamics, Biological Foundation Models",
     "name": "Kevin Chan, PhD",
+    "bio_long": "Kevin is the Principal Investigator of CC Lab. He received his PhD from City University of Hong Kong (CityUHK) and completed postdoctoral training at The Ohio State University (OSU). Before joining XJTLU in 2024, he was at Zhejiang University (ZJU) developing machine learning algorithms for drug discovery. His research spans structural bioinformatics, molecular dynamics, and biological foundation models. He is also a member of the Center for Intelligent RNA Therapeutics at XJTLU.",
     "role": "Principal Investigator",
     "title": "Assistant Professor; Principal Investigator",
+    "type": "member",
+    "id": "kevin_chan",
     "image": "/assets/images/people/cc.jpg",
-    "bio_long": "Kevin is the Principal Investigator of CC Lab. He received his PhD from City University of Hong Kong (CityUHK) and completed postdoctoral training at The Ohio State University (OSU). Before joining XJTLU in 2024, he was at Zhejiang University (ZJU) developing machine learning algorithms for drug discovery. His research spans structural bioinformatics, molecular dynamics, and biological foundation models. He is also a member of the Center for Intelligent RNA Therapeutics at XJTLU.",
-    "interest": "Structural Bioinformatics, Molecular Dynamics, Biological Foundation Models",
-    "email": "Chun.Chan@xjtlu.edu.cn",
-    "github": "skblnw",
-    "google_scholar": "rSZrshkAAAAJ&hl=en",
     "orcid": "0000-0002-3705-1835",
-    "type": "member"
+    "email": "Chun.Chan@xjtlu.edu.cn"
   },
   "members": [
     {
@@ -49,7 +49,7 @@
       "name": "Longtian Li",
       "role": "MSc Student",
       "title": "MSc Student",
-      "image": "/assets/images/people/Longtian_Li.JPG",
+      "image": "/assets/images/longtian_li.jpeg",
       "bio_long": "",
       "interest": "",
       "type": "member"
@@ -215,15 +215,15 @@
       "type": "member"
     },
     {
-      "id": "qiujie_zhu",
+      "interest": "Lab Operations, Computational Infrastructure",
       "name": "Qiujie Zhu",
+      "bio_long": "Qiujie joined the lab with an M.S. in Bioinformatics. She manages the lab's day-to-day operations and computational infrastructure.",
       "role": "Staff",
       "title": "Lab Manager / Technician",
+      "type": "member",
+      "id": "qiujie_zhu",
       "image": "/assets/images/people/Qiujie_Zhu.jpg",
-      "bio_long": "Qiujie joined the lab with an M.S. in Bioinformatics. She manages the lab's day-to-day operations and computational infrastructure.",
-      "interest": "Lab Operations, Computational Infrastructure",
-      "email": "Qiujie.Zhu@xjtlu.edu.cn",
-      "type": "member"
+      "email": "Qiujie.Zhu@xjtlu.edu.cn"
     },
     {
       "id": "zhicheng_yang",
@@ -234,6 +234,22 @@
       "bio_long": "",
       "interest": "",
       "type": "member"
+    },
+    {
+      "type": "member",
+      "id": "xingyu_hu",
+      "name": "Xingyu Hu",
+      "role": "PhD Student",
+      "title": "PhD Student",
+      "image": "/assets/images/xingyu_hu.jpeg"
+    },
+    {
+      "type": "member",
+      "id": "jiachen_zhao",
+      "name": "Jiachen Zhao",
+      "role": "MSc Student",
+      "title": "MSc Student",
+      "image": "/assets/images/jiachen_zhao.jpeg.png"
     }
   ],
   "alumni": [
@@ -260,14 +276,6 @@
       "title": "UG Researcher (FYP) 2025",
       "type": "alumn",
       "current_position": "Master, National University of Singapore"
-    },
-    {
-      "id": "xingyu_hu",
-      "name": "Xingyu Hu",
-      "role": "Undergraduate Researcher",
-      "title": "UG Researcher (FYP) 2024",
-      "type": "alumn",
-      "current_position": "Master, Carnegie Mellon University"
     }
   ]
 }
