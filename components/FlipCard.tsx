@@ -35,7 +35,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ name, image, cardText, title
 
   return (
     <div
-      className="@container group [perspective:1200px] cursor-pointer select-none outline-none rounded-lg focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-primary-dark"
+      className="@container cursor-pointer select-none outline-none rounded-lg focus-visible:ring-2 focus-visible:ring-primary dark:focus-visible:ring-primary-dark"
       role="button"
       tabIndex={0}
       aria-pressed={flipped}
@@ -43,20 +43,29 @@ export const FlipCard: React.FC<FlipCardProps> = ({ name, image, cardText, title
       onClick={toggle}
       onKeyDown={handleKeyDown}
     >
+      {/* Perspective lives on its own wrapper: container-type (layout
+          containment) on the same element as perspective confuses 3D
+          compositing in some browsers and causes one-frame face ghosts. */}
+      <div className="group [perspective:1200px]">
       {/* Class names must stay as complete strings — concatenating them inline
-          with template literals hides them from Tailwind's source scanner. */}
+          with template literals hides them from Tailwind's source scanner.
+          will-change-transform promotes the card to its own compositor layer
+          so both faces are rasterized before the first flip (no first-flip
+          flash of the stale front face). */}
       <div
         className={[
-          'relative transform-3d transition-transform duration-500',
+          'relative transform-3d transition-transform duration-500 will-change-transform',
           'group-hover:rotate-y-180',
           flipped ? 'rotate-y-180' : '',
         ].filter(Boolean).join(' ')}
       >
         {/* Front — photo + text rows; in normal flow so it sets the card height.
-            Renders exactly like a non-flip member cell. */}
+            Renders exactly like a non-flip member cell. The Avatar's default
+            hover-zoom (scale-110, 700ms) is overridden here: it outlasts the
+            500ms flip and leaves a lingering enlarged photo mid-animation. */}
         <div className="backface-hidden">
           <div className="aspect-square overflow-hidden rounded-full bg-gray-100 dark:bg-surface mb-5">
-            <Avatar name={name} image={image} />
+            <Avatar name={name} image={image} className="w-full h-full object-cover" />
           </div>
           <h3 className="text-lg font-bold text-slate-900 dark:text-text leading-tight">{name}</h3>
           {title && <p className="text-primary dark:text-primary-dark font-medium text-sm my-1">{title}</p>}
@@ -77,6 +86,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({ name, image, cardText, title
             <p className="text-xs leading-snug @min-[200px]:text-sm @min-[200px]:leading-relaxed text-slate-600 dark:text-subtext max-h-full overflow-hidden line-clamp-12 text-center">{cardText}</p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
