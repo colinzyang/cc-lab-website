@@ -5,6 +5,7 @@ import { useBreadcrumb } from '../src/context/BreadcrumbContext';
 import { loadMembers, Member as MemberType } from '../src/lib/dataLoader';
 import { useDocumentTitle } from '../src/hooks/useDocumentTitle';
 import { Avatar } from './Avatar';
+import { FlipCard } from './FlipCard';
 
 // April Fools' Day check
 const isAprilFools = (): boolean => {
@@ -246,13 +247,26 @@ export const Member: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: groupIdx * 0.05 + idx * 0.05 + 0.2 }}
                       >
-                        <div className="aspect-square overflow-hidden rounded-full bg-gray-100 dark:bg-surface mb-5">
-                          <Avatar name={person.name} image={person.image} />
-                        </div>
-                        <h3 className="text-lg font-bold text-slate-900 dark:text-text leading-tight">{person.name}</h3>
-                        <p className="text-primary dark:text-primary-dark font-medium text-sm my-1">{person.title || person.role}</p>
-                        {person.interest && (
-                          <p className="text-sm text-slate-500 dark:text-subtext leading-snug">{person.interest}</p>
+                        {person.card_text ? (
+                          <FlipCard
+                            key={person.id}
+                            name={person.name}
+                            image={person.image}
+                            cardText={person.card_text}
+                            title={person.title || person.role}
+                            interest={person.interest || undefined}
+                          />
+                        ) : (
+                          <>
+                            <div className="aspect-square overflow-hidden rounded-full bg-gray-100 dark:bg-surface mb-5">
+                              <Avatar name={person.name} image={person.image} />
+                            </div>
+                            <h3 className="text-lg font-bold text-slate-900 dark:text-text leading-tight">{person.name}</h3>
+                            <p className="text-primary dark:text-primary-dark font-medium text-sm my-1">{person.title || person.role}</p>
+                            {person.interest && (
+                              <p className="text-sm text-slate-500 dark:text-subtext leading-snug">{person.interest}</p>
+                            )}
+                          </>
                         )}
                       </motion.div>
                     );

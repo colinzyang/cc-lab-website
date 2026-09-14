@@ -7,6 +7,8 @@ export interface Member {
   image?: string;
   bio?: string;
   bio_long?: string;
+  /** Short self-intro shown on the back of the member's flip card */
+  card_text?: string;
   interest?: string;
   email?: string;
   github?: string;
