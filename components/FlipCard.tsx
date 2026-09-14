@@ -66,9 +66,13 @@ export const FlipCard: React.FC<FlipCardProps> = ({ name, image, cardText, title
             Typography follows the CARD size (container query), not the viewport:
             narrow cards (2-col mobile, or 5-col on smaller laptops) get compact
             type; wide cards get comfortable type. flex-1 min-h-0 bounds the text
-            region so line-clamp's line budget can never exceed the card height. */}
-        <div className="absolute inset-0 rounded-lg overflow-hidden backface-hidden rotate-y-180 bg-gray-100 dark:bg-surface-1 border border-gray-200 dark:border-border flex flex-col p-3 @min-[200px]:p-4">
-          <p className="text-xs @min-[200px]:text-sm font-bold text-slate-900 dark:text-text text-center leading-none pt-0.5 pb-1 mb-1.5 border-b border-gray-200 dark:border-border shrink-0">{name}</p>
+            region so line-clamp's line budget can never exceed the card height.
+            Design system: subtle vertical gradient for depth, slim primary accent
+            line above the name (same intensity as hover:border-primary/30 on
+            Research/Resources cards). */}
+        <div className="absolute inset-0 rounded-lg overflow-hidden backface-hidden rotate-y-180 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-surface-1 dark:to-surface border border-gray-200 dark:border-border flex flex-col p-3 @min-[200px]:p-4">
+          <span aria-hidden="true" className="w-6 h-0.5 rounded-full bg-primary dark:bg-primary-dark opacity-50 mx-auto mb-2 shrink-0" />
+          <p className="text-xs @min-[200px]:text-sm font-bold text-slate-900 dark:text-text text-center leading-none pb-1.5 mb-1.5 border-b border-gray-200/70 dark:border-border shrink-0">{name}</p>
           <div className="flex-1 min-h-0 flex items-center justify-center">
             <p className="text-xs leading-snug @min-[200px]:text-sm @min-[200px]:leading-relaxed text-slate-600 dark:text-subtext max-h-full overflow-hidden line-clamp-12 text-center">{cardText}</p>
           </div>
