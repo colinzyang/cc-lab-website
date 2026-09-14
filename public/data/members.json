@@ -22,6 +22,7 @@
       "image": "/assets/images/people/Vivian_XIA.jpg",
       "bio_long": "Vivian is CC Lab's first PhD student. She completed her undergraduate degree at XJTLU and her Master's at Columbia University before returning to pursue her PhD. She works on representation learning for biomolecules.",
       "interest": "",
+      "card_text": "PhD student working on representation learning for biomolecules. Interested in protein language models and how machines 'understand' molecules.",
       "type": "member"
     },
     {
@@ -32,6 +33,7 @@
       "image": "/assets/images/people/Chen_Chu.jpg",
       "bio_long": "",
       "interest": "",
+      "card_text": "MSc student exploring molecular dynamics simulations. Curious about how proteins move, fold, and misbehave.",
       "type": "member"
     },
     {
