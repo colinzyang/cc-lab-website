@@ -226,15 +226,15 @@
       "email": "Qiujie.Zhu@xjtlu.edu.cn"
     },
     {
-      "id": "zhicheng_yang",
+      "interest": "",
       "name": "Zhicheng Yang",
+      "bio_long": "",
       "role": "Staff",
       "title": "Web Developer",
+      "type": "member",
+      "id": "zhicheng_yang",
       "image": "/assets/images/people/zhicheng_yang_placeholder.svg",
-      "bio_long": "",
-      "interest": "",
-      "card_text": "test",
-      "type": "member"
+      "card_text": "testtesttesttesttesttesttesttesttesttest;testtest,testtest...test.testtestTest,Test;test?/_-"
     },
     {
       "type": "member",
