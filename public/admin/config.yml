@@ -54,7 +54,7 @@ collections:
               - {label: "Image", name: "image", widget: "image", required: false, hint: "Optional — an initial-based avatar is generated automatically if left empty"}
               - {label: "Biography (Long)", name: "bio_long", widget: "text", required: false}
               - {label: "Research Interest", name: "interest", widget: "string", required: false}
-              - {label: "Flip Card Text", name: "card_text", widget: "text", required: false, hint: "Short intro shown on the back of the member's photo card. Fits ~190 English chars / ~100 Chinese chars on any screen; larger screens fit more (~285 English chars). Longer text gets truncated. Leave empty to disable the flip card."}
+              - {label: "Flip Card Text", name: "card_text", widget: "text", required: false, hint: "Short intro shown on the back of the member's photo card. Recommended: within 150 English chars / 80 Chinese chars (mixed: 1 Chinese char = 2 English chars) to display fully on every screen; tablets and large screens fit ~2-3x more. Longer text is truncated with an ellipsis. Leave empty to disable the flip card."}
               - {label: "Email", name: "email", widget: "string", required: false}
               - {label: "GitHub Username", name: "github", widget: "string", required: false}
               - {label: "Google Scholar ID", name: "google_scholar", widget: "string", required: false}
