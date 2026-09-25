@@ -4,6 +4,17 @@
       "year": 2026,
       "papers": [
         {
+          "authors": "Jiaxuan Wu, Xinyu He, Minghua Fu, Yue Liu, Wan Su, Ruopeng Li, Mingming Xu, Kevin Chun Chan, Daiyun Huang, Sijin Wu",
+          "date": "Jun 2026",
+          "bibtexKey": "wu_tau_acetylation_2026",
+          "journal": "The Journal of Physical Chemistry B",
+          "title": "Molecular Basis of Synergistic Tau Amyloid Core Inhibition by K311/K353 Acetylation via Microsecond MD Simulations",
+          "id": 37,
+          "image": "/assets/images/papers/default.jpg",
+          "year": 2026,
+          "doi": "10.1021/acs.jpcb.6c01124"
+        },
+        {
           "authors": "Guanqiao Zhang, Yaqi Fu, Kevin C. Chan, Ruofan Jin, Yuxuan Yang, Lei Fu, Ruhong Zhou",
           "date": "Jan 2026",
           "bibtexKey": "zhang_multi-strategy_2026",
