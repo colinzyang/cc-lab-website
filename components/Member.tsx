@@ -26,13 +26,13 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 const ROLE_ORDER: Record<string, number> = {
   'Staff': 0,
   'PhD Student': 1,
-  'MSc Student': 2,
+  'MRes Student': 2,
   'Undergraduate Researcher': 3,
 };
 
 const GROUP_LABELS: Record<string, string> = {
   'PhD Student': 'PhD Students',
-  'MSc Student': 'MSc Students',
+  'MRes Student': 'MRes Students',
   'Undergraduate Researcher': 'Undergraduate Researchers',
   'Staff': 'Staff',
 };

@@ -280,4 +280,4 @@ Netlify auto-deploys on push to `main`. Live site: https://cc-lab-xjtlu.netlify.
 8. **Data loading** — always use `dataLoader.ts` loaders; never import JSON directly
 9. **Cache** — hard-refresh browser (Cmd+Shift+R) to pick up JSON edits during dev
 10. **`loadNews()` returns `NewsItem[]` directly** — not `{ items }`. Calling `.items` on the result returns `undefined` and silently breaks rendering
-11. **Member grouping** — `Member.tsx` groups by `role` field using `ROLE_ORDER`: PhD Student → MSc Student → Undergraduate Researcher → Lab Manager. Alumni use `type: "alumn"` and are rendered as a compact text roster, hidden when `alumni[]` is empty
+11. **Member grouping** — `Member.tsx` groups by `role` field using `ROLE_ORDER`: PhD Student → MRes Student → Undergraduate Researcher → Lab Manager. Alumni use `type: "alumn"` and are rendered as a compact text roster, hidden when `alumni[]` is empty

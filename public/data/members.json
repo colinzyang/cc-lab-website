@@ -27,8 +27,8 @@
     {
       "id": "chen_chu",
       "name": "Chen Chu",
-      "role": "MSc Student",
-      "title": "MSc Student",
+      "role": "MRes Student",
+      "title": "MRes Student",
       "image": "/assets/images/people/Chen_Chu.jpg",
       "bio_long": "",
       "interest": "",
@@ -37,8 +37,8 @@
     {
       "id": "zixuan_guo",
       "name": "Zixuan Guo",
-      "role": "MSc Student",
-      "title": "MSc Student",
+      "role": "MRes Student",
+      "title": "MRes Student",
       "image": "/assets/images/people/Zixuan_Guo.jpg",
       "bio_long": "",
       "interest": "",
@@ -47,8 +47,8 @@
     {
       "id": "longtian_li",
       "name": "Longtian Li",
-      "role": "MSc Student",
-      "title": "MSc Student",
+      "role": "MRes Student",
+      "title": "MRes Student",
       "image": "/assets/images/longtian_li.jpeg",
       "bio_long": "",
       "interest": "",
@@ -57,49 +57,9 @@
     {
       "id": "wenjingyi_liang",
       "name": "Wenjingyi Liang",
-      "role": "MSc Student",
-      "title": "MSc Student",
+      "role": "MRes Student",
+      "title": "MRes Student",
       "image": "/assets/images/people/Wenjingyi_Liang.jpg",
-      "bio_long": "",
-      "interest": "",
-      "type": "member"
-    },
-    {
-      "id": "aixue_wang",
-      "name": "Aixue Wang",
-      "role": "Undergraduate Researcher",
-      "title": "UG Researcher (FYP)",
-      "image": "/assets/images/people/Aixue_Wang.jpg",
-      "bio_long": "",
-      "interest": "",
-      "type": "member"
-    },
-    {
-      "id": "jiahua_zhou",
-      "name": "Jiahua Zhou",
-      "role": "Undergraduate Researcher",
-      "title": "UG Researcher (FYP)",
-      "image": "/assets/images/people/Jiahua_Zhou.jpg",
-      "bio_long": "",
-      "interest": "",
-      "type": "member"
-    },
-    {
-      "id": "yuchong_yan",
-      "name": "Yuchong Yan",
-      "role": "Undergraduate Researcher",
-      "title": "UG Researcher (FYP)",
-      "image": "/assets/images/people/Yuchong_Yan.png",
-      "bio_long": "",
-      "interest": "",
-      "type": "member"
-    },
-    {
-      "id": "yixin_qin",
-      "name": "Yixin Qin",
-      "role": "Undergraduate Researcher",
-      "title": "UG Researcher (FYP)",
-      "image": "/assets/images/people/Yixin_Qin.jpg",
       "bio_long": "",
       "interest": "",
       "type": "member"
@@ -248,8 +208,8 @@
       "type": "member",
       "id": "jiachen_zhao",
       "name": "Jiachen Zhao",
-      "role": "MSc Student",
-      "title": "MSc Student",
+      "role": "MRes Student",
+      "title": "MRes Student",
       "image": "/assets/images/jiachen_zhao.jpeg.png"
     }
   ],
@@ -277,6 +237,50 @@
       "title": "UG Researcher (FYP) 2025",
       "type": "alumn",
       "current_position": "Master, National University of Singapore"
+    },
+    {
+      "id": "aixue_wang",
+      "name": "Aixue Wang",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP)",
+      "image": "/assets/images/people/Aixue_Wang.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "alumn",
+      "current_position": "Master, Imperial College London"
+    },
+    {
+      "id": "jiahua_zhou",
+      "name": "Jiahua Zhou",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP)",
+      "image": "/assets/images/people/Jiahua_Zhou.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "alumn",
+      "current_position": "Master, Cornell University"
+    },
+    {
+      "id": "yuchong_yan",
+      "name": "Yuchong Yan",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP)",
+      "image": "/assets/images/people/Yuchong_Yan.png",
+      "bio_long": "",
+      "interest": "",
+      "type": "alumn",
+      "current_position": "Master, Imperial College London"
+    },
+    {
+      "id": "yixin_qin",
+      "name": "Yixin Qin",
+      "role": "Undergraduate Researcher",
+      "title": "UG Researcher (FYP)",
+      "image": "/assets/images/people/Yixin_Qin.jpg",
+      "bio_long": "",
+      "interest": "",
+      "type": "alumn",
+      "current_position": "Master, Cornell University"
     }
   ]
 }
